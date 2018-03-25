@@ -7,16 +7,23 @@ public class UserPanelController implements ActionListener {
     private User user;
     private UserPanel userPanel;
 
+
     public UserPanelController() {
-        this.userPanel = new UserPanel();
+        userPanel = new UserPanel();
         userPanel.setController(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
+        String source = e.getActionCommand();
+
+        System.out.println(source);
+
 
     }
     public void update() {
 
     }
+
+
 }

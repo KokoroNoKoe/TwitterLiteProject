@@ -51,6 +51,9 @@ public class UserPanel extends JPanel {
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
 
+        layout.setAutoCreateContainerGaps(true);
+        layout.setAutoCreateGaps(true);
+
         layout.setHorizontalGroup(
                 layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)

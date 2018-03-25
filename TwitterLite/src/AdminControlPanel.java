@@ -1,3 +1,5 @@
+import com.sun.deploy.uitoolkit.impl.awt.ui.SwingConsoleWindow;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -46,6 +48,7 @@ public class AdminControlPanel extends JPanel {
     private void createComponents() {
 
         treeViewPanel = new JPanel();
+        treeViewPanel.setPreferredSize(new Dimension(75,400));
 
         addUserBtn = new JButton("Add User");
         addGroupBtn = new JButton("Add Group");
@@ -66,6 +69,10 @@ public class AdminControlPanel extends JPanel {
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
 
+
+        layout.setAutoCreateContainerGaps(true);
+        layout.setAutoCreateGaps(true);
+
         layout.setHorizontalGroup(
                 layout.createSequentialGroup()
                         .addComponent(treeViewPanel)
@@ -81,6 +88,8 @@ public class AdminControlPanel extends JPanel {
                                 .addComponent(showGroupTotalBtn)
                                 .addComponent(showPosMsgNumBtn))
         );
+        layout.linkSize(SwingConstants.HORIZONTAL, showGroupTotalBtn, showMsgTotalBtn, showPosMsgNumBtn, showUserTotalBtn, openUserViewBtn);
+
         layout.setVerticalGroup(
                 layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
