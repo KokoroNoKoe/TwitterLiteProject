@@ -19,7 +19,6 @@ public class UserPanel extends JPanel {
         setLayout();
 
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.add(this);
         frame.pack();
         frame.setVisible(true);
