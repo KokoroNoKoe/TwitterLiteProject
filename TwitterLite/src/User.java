@@ -6,10 +6,12 @@ public class User extends UserComponent implements Subject, Observer {
     private ArrayList<String> followings = new ArrayList<>();
     private ArrayList<Tweet> feedList = new ArrayList<>();
 
-    private DebugDisplay debugger = new DebugDisplay();//debugging
+    private UserDBMS userDBMS;
 
-    public User(String id) {
+
+    public User(String id, UserDBMS userDBMS) {
         this.id = id;
+        this.userDBMS = userDBMS;
     }
 
 

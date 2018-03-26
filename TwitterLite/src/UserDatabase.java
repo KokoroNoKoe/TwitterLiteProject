@@ -9,6 +9,12 @@ public class UserDatabase {
     private ArrayList<Tweet> allTweets;
     private HashMap<String, UserComponent> allUsersAndGroupsMap = new HashMap<>();
 
+    private static UserDatabase instance = null;
+
+    private UserDatabase(){
+
+    }
+
 
     /**
      * add an user to a HashMap
@@ -30,29 +36,31 @@ public class UserDatabase {
 
     /**
      * Find a user reference from the map with the given key
+     *
      * @param id
      * @return the User mapped with the given key, if does not exist, return null
      */
-    public User getUserFromDatabase(String id){
+    public User getUserFromDatabase(String id) {
         UserComponent user = allUsersAndGroupsMap.get(id);//no user found
-        if(isUser(user))
-            return (User)user;
+        if (isUser(user))
+            return (User) user;
         return null;
     }
 
     /**
      * Find a user group reference from the map with the given key
+     *
      * @param id
      * @return the UserGroup mapped with the given key, if does not exist, return null
      */
-    public UserGroup getGroupFromDatabase(String id){
+    public UserGroup getGroupFromDatabase(String id) {
         UserComponent group = allUsersAndGroupsMap.get(id);//no user found
-        if(isGroup(group))
-            return (UserGroup)group;
+        if (isGroup(group))
+            return (UserGroup) group;
         return null;
     }
 
-    public void addRoot(UserGroup root){
+    public void addRoot(UserGroup root) {
         allUsersAndGroupsMap.put(root.getId(), root);
         numOfGroups++;
     }
@@ -82,24 +90,24 @@ public class UserDatabase {
 
     public UserGroup findGroup(String groupId) {
         UserComponent group = null;
-        if(doesIdExist(groupId)) {
+        if (doesIdExist(groupId)) {
             group = allUsersAndGroupsMap.get(groupId);
         }
-        if(group instanceof UserGroup) {   //It can potentially be a User
-            return (UserGroup)group;
-        }else{
+        if (group instanceof UserGroup) {   //It can potentially be a User
+            return (UserGroup) group;
+        } else {
             return null;
         }
     }
 
-    public boolean isUser(UserComponent user){
-        if(user instanceof User)
+    public boolean isUser(UserComponent user) {
+        if (user instanceof User)
             return true;
         return false;
     }
 
-    public boolean isGroup(UserComponent group){
-        if(group instanceof UserGroup)
+    public boolean isGroup(UserComponent group) {
+        if (group instanceof UserGroup)
             return true;
         return false;
     }
@@ -120,5 +128,12 @@ public class UserDatabase {
 
     public int getNumOfPositiveMsg() {
         return numOfPositiveMsg;
+    }
+
+    public static UserDatabase getInstance() {
+        if (instance == null)
+            return new UserDatabase();
+        return instance;
+
     }
 }
