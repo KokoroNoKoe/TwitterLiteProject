@@ -11,8 +11,10 @@ public class UserPanelController implements ActionListener {
     private final String POST_BUTTON = "POST";
 
 
-    public UserPanelController() {
-        userPanel = new UserPanel();
+    public UserPanelController(UserPanel userPanel, User user) {
+        this.user = user;
+        this.userId = user.getId();
+        this.userPanel = userPanel;
         userPanel.setController(this);
     }
 
@@ -22,15 +24,27 @@ public class UserPanelController implements ActionListener {
 
         switch (source) {
             case (FOLLOW_BUTTON):
-
+                followPressed();
                 break;
-            case (POST_BUTTON):
 
+            case (POST_BUTTON):
+                postPressed();
                 break;
         }
 
-
     }
+
+    public void followPressed(){
+        user.follow(userPanel.getUserId());
+    }
+
+    public void postPressed(){
+        user.addFeed(userPanel.getTweetToPost());
+    }
+
+
+
+
     public void update() {
 
     }
