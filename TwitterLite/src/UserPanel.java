@@ -56,11 +56,6 @@ public class UserPanel extends JPanel {
     }
 
 
-
-
-
-
-
     private void createComponents() {
         currentFollowingsPanel = new JPanel();
         followingsLabel = new JLabel("Followings");

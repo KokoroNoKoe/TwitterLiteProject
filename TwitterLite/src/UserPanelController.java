@@ -45,8 +45,6 @@ public class UserPanelController implements ActionListener {
     }
 
 
-
-
     public void update() {
 
     }
