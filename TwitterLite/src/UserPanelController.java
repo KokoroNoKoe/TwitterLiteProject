@@ -26,12 +26,12 @@ public class UserPanelController implements ActionListener {
 
         switch (source) {
             case (FOLLOW_BUTTON):
-                System.out.println(FOLLOW_BUTTON);
+                //System.out.println(FOLLOW_BUTTON);
                 followPressed();
                 break;
 
             case (POST_BUTTON):
-                System.out.println(POST_BUTTON);
+                //System.out.println(POST_BUTTON);
                 postPressed();
                 break;
         }
@@ -44,6 +44,8 @@ public class UserPanelController implements ActionListener {
 
     public void postPressed(){
         user.addFeed(userPanel.getTweetToPost());
+        System.out.println(user.getEveryNewsfeed());
+        userPanel.updateNewsFeed(user.getEveryNewsfeed());
     }
 
 

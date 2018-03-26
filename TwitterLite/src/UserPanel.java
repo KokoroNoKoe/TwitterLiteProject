@@ -7,6 +7,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class UserPanel extends JPanel {
 
     private JPanel currentFollowingsPanel, newsFeedPanel;
+    private JLabel followingsLabel, newsFeedLabel;
     private JTextArea userIdTextArea, tweetTextArea;
     private JButton followBtn, postBtn;
 
@@ -46,15 +47,30 @@ public class UserPanel extends JPanel {
     }
 
 
+    public void updateFollowings(String followingsList){
+        followingsLabel.setText(followingsList);
+    }
+
+    public void updateNewsFeed(String newsFeed) {
+        newsFeedLabel.setText(newsFeed);
+    }
+
+
+
+
+
 
 
     private void createComponents() {
         currentFollowingsPanel = new JPanel();
+        followingsLabel = new JLabel("Followings");
         newsFeedPanel = new JPanel();
+        newsFeedLabel = new JLabel("News Feed");
         userIdTextArea = new JTextArea("User Id");
         tweetTextArea = new JTextArea("tweet here");
         followBtn = new JButton("Follow");
         postBtn = new JButton("Post");
+
 
         currentFollowingsPanel.setBackground(Color.BLUE);
         newsFeedPanel.setBackground(Color.RED);
@@ -63,6 +79,9 @@ public class UserPanel extends JPanel {
     }
 
     private void setLayout() {
+
+        currentFollowingsPanel.add(followingsLabel);
+        newsFeedPanel.add(newsFeedLabel);
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
