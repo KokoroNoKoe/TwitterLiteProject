@@ -7,27 +7,31 @@ public class UserPanelController implements ActionListener {
     private User user;
     private UserPanel userPanel;
 
-    private final String FOLLOW_BUTTON = "FOLLOW";
-    private final String POST_BUTTON = "POST";
+    private final String FOLLOW_BUTTON = "Follow";
+    private final String POST_BUTTON = "Post";
 
 
     public UserPanelController(UserPanel userPanel, User user) {
         this.user = user;
         this.userId = user.getId();
         this.userPanel = userPanel;
-        userPanel.setController(this);
+        this.userPanel.setController(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
         String source = e.getActionCommand();
+        System.out.println(source);
+        System.out.println("action performed");
 
         switch (source) {
             case (FOLLOW_BUTTON):
+                System.out.println(FOLLOW_BUTTON);
                 followPressed();
                 break;
 
             case (POST_BUTTON):
+                System.out.println(POST_BUTTON);
                 postPressed();
                 break;
         }

@@ -78,7 +78,7 @@ public class AdminController implements ActionListener{
         if(user == null) {
             adminControlPanel.setInfoLabel("The user does not exist");
         }else {
-            new UserPanelController(new UserPanel(), user);
+            new UserPanelController(new UserPanel(user.getId()), user);
         }
     }
 

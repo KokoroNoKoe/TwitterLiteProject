@@ -12,7 +12,7 @@ public class UserPanel extends JPanel {
 
 
 
-    public UserPanel() {
+    public UserPanel(String title) {
         createComponents();
 
         setBackground(Color.WHITE);
@@ -21,6 +21,7 @@ public class UserPanel extends JPanel {
         setLayout();
 
         JFrame frame = new JFrame();
+        frame.setTitle(title);
         frame.add(this);
         frame.pack();
         frame.setVisible(true);
@@ -30,6 +31,7 @@ public class UserPanel extends JPanel {
     }
 
     public void setController(ActionListener controller){
+        System.out.println("setController called");
         followBtn.addActionListener(controller);
         postBtn.addActionListener(controller);
     }
