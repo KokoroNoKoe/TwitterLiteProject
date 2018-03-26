@@ -28,7 +28,6 @@ public class UserDatabase {
         }
     }
 
-
     public void addRoot(UserGroup root){
         allUsersAndGroupsMap.put(root.getId(), root);
         numOfGroups++;
@@ -44,7 +43,6 @@ public class UserDatabase {
             System.out.printf("Group '%s' successfully added!\n", id);
         }
     }
-
 
     public void addTweet(Tweet tweet) {
         allTweets.add(tweet);

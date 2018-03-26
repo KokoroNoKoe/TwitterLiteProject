@@ -46,9 +46,7 @@ public class UserPanel extends JPanel {
 
     }
 
-
-
-    public void setLayout() {
+    private void setLayout() {
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);

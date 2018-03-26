@@ -89,7 +89,6 @@ public class AdminControlPanel extends JPanel {
 
     }
 
-
     private void setLayout() {
 
         GroupLayout layout = new GroupLayout(this);
@@ -137,7 +136,6 @@ public class AdminControlPanel extends JPanel {
         );
 
     }
-
 
     //Singleton
     public static AdminControlPanel getInstance() {
