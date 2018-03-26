@@ -44,6 +44,13 @@ public class AdminControlPanel extends JPanel {
 
     }
 
+    public String getUserId() {
+        return userIdTextArea.getText();
+    }
+
+    public String getGroupId() {
+        return groupITextArea.getText();
+    }
 
     private void createComponents() {
 

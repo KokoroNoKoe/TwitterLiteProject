@@ -6,6 +6,8 @@ public class AdminController implements ActionListener{
     private static AdminController instance = null;
 
     private AdminControlPanel adminControlPanel;
+    private UserComponentFactory userComponentFactory = new UserComponentFactory();
+    private UserDatabase userDatabase = new UserDatabase();
 
     private final String OPEN_USER_VIEW_BUTTON = "Open User View";
     private final String SHOW_USER_TTL_BUTTON = "Show Total Users";
@@ -14,6 +16,7 @@ public class AdminController implements ActionListener{
     private final String SHOW_POS_MSG_BUTTON = "Show Total Positives";
     private final String ADD_USER = "Add User";
     private final String ADD_GROUP = "Add Group";
+
 
     public AdminController() {
         System.out.println("Admin controller");
@@ -51,10 +54,14 @@ public class AdminController implements ActionListener{
                 System.out.println("POSITIVE MESSAGES: ");
                 break;
             case (ADD_USER):
-                System.out.println("IMPLEMENT ADD USERS!! ");
+                String userId = adminControlPanel.getUserId();
+                userDatabase.addUser(userId,userComponentFactory.createUser(userId));
                 break;
             case (ADD_GROUP):
-                System.out.println("IMPLEMENT ADD GROUP!! ");
+                String groupId = adminControlPanel.getGroupId();
+                System.out.println("Group ID: "+groupId);
+                //userDatabase.addGroup(groupId, new UserGroup(groupId));
+                userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId));
                 break;
 
         }

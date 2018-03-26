@@ -7,7 +7,7 @@ public class UserDatabase {
     private int numOfTweets;
     private int numOfPositiveMsg;
     private ArrayList<Tweet> allTweets;
-    private HashMap<String, UserComponent> allUsersAndGroupsMap;
+    private HashMap<String, UserComponent> allUsersAndGroupsMap = new HashMap<>();
 
 
     /**
@@ -16,8 +16,10 @@ public class UserDatabase {
      * @param user
      */
     public void addUser(String id, UserComponent user) {
-        allUsersAndGroupsMap.put(id, user);
-        numOfUsers++;
+        if(user != null) {
+            allUsersAndGroupsMap.put(id, user);
+            numOfUsers++;
+        }
     }
 
     /**
@@ -26,8 +28,10 @@ public class UserDatabase {
      * @param group
      */
     public void addGroup(String id, UserComponent group) {
-        allUsersAndGroupsMap.put(id, group);
-        numOfGroups++;
+        if(group !=null) {
+            allUsersAndGroupsMap.put(id, group);
+            numOfGroups++;
+        }
     }
 
 
