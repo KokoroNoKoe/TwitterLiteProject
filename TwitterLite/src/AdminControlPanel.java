@@ -1,6 +1,7 @@
 import com.sun.deploy.uitoolkit.impl.awt.ui.SwingConsoleWindow;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -11,7 +12,7 @@ public class AdminControlPanel extends JPanel {
     public static AdminControlPanel instance = null;
 
     private JPanel treeViewPanel;
-    private JTree treeView;
+    private JTree userTree;
 
     private JButton addUserBtn, addGroupBtn, openUserViewBtn,
             showUserTotalBtn, showGroupTotalBtn, showMsgTotalBtn, showPosMsgNumBtn;
@@ -20,9 +21,11 @@ public class AdminControlPanel extends JPanel {
 
     private AdminControlPanel() {
         setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(400,400));
+        setPreferredSize(new Dimension(500,500));
         createComponents();
         setLayout();
+
+
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -54,7 +57,16 @@ public class AdminControlPanel extends JPanel {
     private void createComponents() {
 
         treeViewPanel = new JPanel();
-        treeViewPanel.setPreferredSize(new Dimension(75,400));
+        treeViewPanel.setPreferredSize(new Dimension(200,200));
+
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+        DefaultMutableTreeNode yuki = new DefaultMutableTreeNode("Yuki");
+        root.add(yuki);
+        userTree = new JTree(root);
+
+
+        treeViewPanel.add(userTree);
+
 
         addUserBtn = new JButton("Add User");
         addGroupBtn = new JButton("Add Group");
@@ -65,7 +77,7 @@ public class AdminControlPanel extends JPanel {
         showPosMsgNumBtn = new JButton("Show Total Positives");
 
         userIdTextArea = new JTextArea("enter user id");
-        groupITextArea = new JTextArea("enter group id");
+        groupITextArea = new JTextArea("Root");
 
     }
 
@@ -74,7 +86,6 @@ public class AdminControlPanel extends JPanel {
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
-
 
         layout.setAutoCreateContainerGaps(true);
         layout.setAutoCreateGaps(true);

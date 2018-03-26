@@ -16,27 +16,28 @@ public class UserDatabase {
      * @param id
      * @param user
      */
-    public void addUser(String id, UserComponent user) {
+    public void addUser(String id, UserComponent user, UserGroup group) {
         if (doesIdExist(id)) {
             System.out.println("User name already exist");
         } else {
             allUsersAndGroupsMap.put(id, user);
             numOfUsers++;
+            group.addUserComponent(user);
         }
     }
 
-    /**
-     * Adds a group to a hash map
-     *
-     * @param id
-     * @param group
-     */
-    public void addGroup(String id, UserComponent group) {
+
+    public void addRoot(UserGroup root){
+        allUsersAndGroupsMap.put(root.getId(), root);
+    }
+
+    public void addGroup(String id, UserComponent group, UserGroup parentGroup) {
         if (doesIdExist(id)) {
             System.out.println("Id already exists");
         } else {
             allUsersAndGroupsMap.put(id, group);
             numOfGroups++;
+            parentGroup.addUserComponent(group);
         }
     }
 
@@ -51,6 +52,18 @@ public class UserDatabase {
         if (user == null)
             return false;
         return true;
+    }
+
+    public UserGroup findGroup(String groupId) {
+        UserComponent group = null;
+        if(doesIdExist(groupId)) {
+            group = allUsersAndGroupsMap.get(groupId);
+        }
+        if(group instanceof UserGroup) {   //It can potentially be a User
+            return (UserGroup)group;
+        }else{
+            return null;
+        }
     }
 
     //getters

@@ -24,6 +24,9 @@ public class User extends UserComponent implements Subject, Observer {
 
     }
 
+    public String getId() {
+        return id;
+    }
 
     @Override
     public void update() {
@@ -43,6 +46,11 @@ public class User extends UserComponent implements Subject, Observer {
     @Override
     public void removeObserver(Observer observer) {
 
+    }
+
+    @Override
+    public void print() {
+       System.out.print(" "+ getId());
     }
 
 
