@@ -29,8 +29,8 @@ public class AdminController implements ActionListener{
         adminControlPanel.setController(this);
 
         userDatabase.addRoot(root);
-        rootNode = new DefaultMutableTreeNode("Root");
-        adminControlPanel.createTree(rootNode);
+        //rootNode = new DefaultMutableTreeNode("Root");
+        //adminControlPanel.createTree(rootNode);
     }
 
     public void openUserView(String id) {
@@ -75,7 +75,7 @@ public class AdminController implements ActionListener{
 
         }
 
-        adminControlPanel.updateTree(rootNode);
+        //adminControlPanel.updateTree(rootNode);
     }
 
     public void openUserViewButtonPressed(){
@@ -97,7 +97,7 @@ public class AdminController implements ActionListener{
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
             userDatabase.addUser(userId, userComponentFactory.createUser(userId),group);
-
+            //adminControlPanel.updateTree(new DefaultMutableTreeNode(userId));
         }
     }
 
@@ -113,6 +113,7 @@ public class AdminController implements ActionListener{
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
             userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup);
+            //adminControlPanel.updateTree(new DefaultMutableTreeNode(groupId));
         }
     }
 

@@ -2,6 +2,7 @@ import com.sun.deploy.uitoolkit.impl.awt.ui.SwingConsoleWindow;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -65,31 +66,39 @@ public class AdminControlPanel extends JPanel {
     }
 
     public void createTree(DefaultMutableTreeNode treeNode) {
-        userTree = new JTree(treeNode);
+        DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
+        root.add(treeNode);
+        model.reload(root);
+       // treeScrollPane = new JScrollPane();
+        //treeScrollPane.getViewport().setView(userTree);
 
-        treeScrollPane = new JScrollPane();
-        treeScrollPane.getViewport().setView(userTree);
-        treeScrollPane.setPreferredSize(new Dimension(100,190));
-        treeViewPanel.add(treeScrollPane);
+        //treeViewPanel.add(treeScrollPane);
     }
 
-    public void updateTree(DefaultMutableTreeNode root){
-        userTree = new JTree(root);
-        treeScrollPane.getViewport().setView(userTree);
+    public void updateTree(DefaultMutableTreeNode treeNode){
+        DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
+        root.add(treeNode);
+        model.reload(root);
     }
 
     private void createComponents() {
 
         treeViewPanel = new JPanel();
         treeViewPanel.setPreferredSize(new Dimension(200, 200));
-
+        treeScrollPane = new JScrollPane();
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
         //DefaultMutableTreeNode yuki = new DefaultMutableTreeNode("Yuki");
         //root.add(yuki);
+
         userTree = new JTree(root);
 
-        treeViewPanel.add(userTree);
+        treeScrollPane.getViewport().setView(userTree);
+        treeScrollPane.setPreferredSize(new Dimension(100,190));
+
+        treeViewPanel.add(treeScrollPane);
 
 
         addUserBtn = new JButton("Add User");

@@ -75,6 +75,7 @@ public class UserDatabase {
             parentGroup.addUserComponent(group);
             parentGroup.getTreeNode().add(group.getTreeNode());//added
             System.out.printf("Group '%s' successfully added!\n", id);
+
         }
     }
 
