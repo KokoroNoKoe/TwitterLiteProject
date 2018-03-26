@@ -28,6 +28,35 @@ public class UserDatabase {
         }
     }
 
+<<<<<<< HEAD
+=======
+
+    /**
+     * Find a user reference from the map with the given key
+     * @param id
+     * @return the User mapped with the given key, if does not exist, return null
+     */
+    public User getUserFromDatabase(String id){
+        UserComponent user = allUsersAndGroupsMap.get(id);//no user found
+        if(isUser(user))
+            return (User)user;
+        return null;
+    }
+
+    /**
+     * Find a user group reference from the map with the given key
+     * @param id
+     * @return the UserGroup mapped with the given key, if does not exist, return null
+     */
+    public UserGroup getGroupFromDatabase(String id){
+        UserComponent group = allUsersAndGroupsMap.get(id);//no user found
+        if(isGroup(group))
+            return (UserGroup)group;
+        return null;
+    }
+
+
+>>>>>>> ce64a27017889907ee71049c6fdc97baa97ba860
     public void addRoot(UserGroup root){
         allUsersAndGroupsMap.put(root.getId(), root);
         numOfGroups++;
@@ -67,6 +96,19 @@ public class UserDatabase {
             return null;
         }
     }
+
+    public boolean isUser(UserComponent user){
+        if(user instanceof User)
+            return true;
+        return false;
+    }
+
+    public boolean isGroup(UserComponent group){
+        if(group instanceof UserGroup)
+            return true;
+        return false;
+    }
+
 
     //getters
     public int getNumOfUsers() {

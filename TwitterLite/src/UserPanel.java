@@ -10,6 +10,8 @@ public class UserPanel extends JPanel {
     private JTextArea userIdTextArea, tweetTextArea;
     private JButton followBtn, postBtn;
 
+
+
     public UserPanel() {
         createComponents();
 
@@ -31,6 +33,18 @@ public class UserPanel extends JPanel {
         followBtn.addActionListener(controller);
         postBtn.addActionListener(controller);
     }
+
+
+    public String getUserId(){
+        return userIdTextArea.getText();
+    }
+
+    public String getTweetToPost(){
+        return tweetTextArea.getText();
+    }
+
+
+
 
     private void createComponents() {
         currentFollowingsPanel = new JPanel();

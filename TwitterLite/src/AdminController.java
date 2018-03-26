@@ -39,7 +39,7 @@ public class AdminController implements ActionListener{
         switch (source) {
 
             case (OPEN_USER_VIEW_BUTTON):
-                    new UserPanelController();
+                    openUserViewButtonPressed();
                 break;
 
             case (SHOW_USER_TTL_BUTTON):
@@ -69,6 +69,16 @@ public class AdminController implements ActionListener{
                     addGroup();
                 break;
 
+        }
+    }
+
+    public void openUserViewButtonPressed(){
+        String userId = adminControlPanel.getUserId();
+        User user = userDatabase.getUserFromDatabase(userId);
+        if(user == null) {
+            adminControlPanel.setInfoLabel("The user does not exist");
+        }else {
+            new UserPanelController(new UserPanel(), user);
         }
     }
 
