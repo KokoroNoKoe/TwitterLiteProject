@@ -7,9 +7,9 @@ public class AdminController implements ActionListener{
     private static AdminController instance = null;
 
     private AdminControlPanel adminControlPanel;
-    private UserComponentFactory userComponentFactory = new UserComponentFactory();
     private UserDatabase userDatabase = UserDatabase.getInstance();
     private UserDBMS userDBMS = UserDBMS.getInstance(userDatabase);
+    private UserComponentFactory userComponentFactory = new UserComponentFactory(userDBMS);
     private UserGroup root = userComponentFactory.createGroup("Root");
 
     private final String OPEN_USER_VIEW_BUTTON = "Open User View";

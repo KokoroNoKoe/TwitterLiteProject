@@ -6,16 +6,20 @@ public class User extends UserComponent implements Subject, Observer {
     private ArrayList<String> followings = new ArrayList<>();
     private ArrayList<Tweet> feedList = new ArrayList<>();
 
-    private UserDBMS userDBMS;
+    private UserDBMS userDBMS = null;
 
 
-    public User(String id, UserDBMS userDBMS) {
+    public User(String id) {
         this.id = id;
-        this.userDBMS = userDBMS;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setUserDBMS(UserDBMS userDBMS) {
+        if (this.userDBMS == null)
+            this.userDBMS = userDBMS;
     }
 
     public String getEveryNewsfeed() {
@@ -27,7 +31,7 @@ public class User extends UserComponent implements Subject, Observer {
         return everyMsg;
     }
 
-    public String getEveryFollowingsString(){
+    public String getEveryFollowingsString() {
         String users = "<html>";
         for (String userId : followings) {
             users += userId + "<br>";
@@ -37,9 +41,15 @@ public class User extends UserComponent implements Subject, Observer {
     }
 
 
-    public void follow(String id) {
-        //System.out.println("follow called");
-        followings.add(id); //does not see the news feed before it follows
+    public boolean follow(String id) {
+        if (userDBMS.doesUserIdExist(id)) {
+            followings.add(id); //does not see the news feed before it follows
+            System.out.println("Followed " + id);
+            return true;
+        } else {
+            System.out.println(id + " does not exist");
+            return false;
+        }
 
     }
 
