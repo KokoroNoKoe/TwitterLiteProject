@@ -47,6 +47,8 @@ public class User extends UserComponent implements Subject, Observer {
         if (userDBMS.doesUserIdExist(id) && !followings.contains(id)) {
             followings.add(id); //does not see the news feed before it follows
             System.out.println("Followed " + id);
+            User following = userDBMS.getUserFromDatabase(id);
+            following.getFollowed(this.id);//observer?
             return true;
         } else {
             System.out.println("failed");
@@ -54,27 +56,47 @@ public class User extends UserComponent implements Subject, Observer {
         }
     }
 
-    public void post(String msg) {
+    public void getFollowed(String follower){
+        followers.add(follower);
+    }
 
+    public void post(String msg) {
+        Tweet tweet = Tweet.createTweet(getId(), msg);
+        last = tweet;
+        addFeed(tweet);
+        notifyObservers();
         //System.out.println("post called");
 
 
     }
 
-    public void addFeed(String msg) {
-        Tweet tweet = Tweet.createTweet(getId(), msg);
+    public void addFeed(Tweet tweet) {
         feedList.add(tweet);
-        //System.out.printf("addFeed in User is called\n%s\n", tweet);
+    }
+
+    //when you post something
+    public void notifyFollowers(){
+
+    }
+
+    //when
+    public void notifyFollowings(){
+
     }
 
     @Override
-    public void update() {
-
+    public void update(Tweet tweet) {
+        addFeed(tweet);
     }
 
-    @Override
+    private Tweet last;//the latest your post
+
+    @Override //observesrs are followers
     public void notifyObservers() {
+        for(String followerId: followers ){
+            userDBMS.getUserFromDatabase(followerId).update(last);
 
+        }
     }
 
     @Override

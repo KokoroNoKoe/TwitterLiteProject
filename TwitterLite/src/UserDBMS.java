@@ -12,6 +12,13 @@ public class UserDBMS {
         return true;
     }
 
+    public User getUserFromDatabase(String userId){
+        User user = userDatabase.getUserFromDatabase(userId);
+        if (user == null) {
+            return null;
+        }
+        return user;
+    }
 
     //Constructor
     private UserDBMS(UserDatabase userDatabase) {

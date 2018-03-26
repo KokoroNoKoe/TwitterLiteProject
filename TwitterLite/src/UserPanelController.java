@@ -1,7 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UserPanelController implements ActionListener {
+public class UserPanelController implements ActionListener, Observer {
 
     private String userId;
     private User user;
@@ -40,12 +40,12 @@ public class UserPanelController implements ActionListener {
     }
 
     public void postPressed(){
-        user.addFeed(userPanel.getTweetToPost());
+        user.post(userPanel.getTweetToPost());
         userPanel.updateNewsFeed(user.getEveryNewsfeed());
     }
 
-
-    public void update() {
+    @Override
+    public void update(Tweet tweet){
 
     }
 
