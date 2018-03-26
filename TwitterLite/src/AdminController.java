@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
@@ -11,6 +12,7 @@ public class AdminController implements ActionListener{
     private UserDBMS userDBMS = UserDBMS.getInstance(userDatabase);
     private UserComponentFactory userComponentFactory = new UserComponentFactory(userDBMS);
     private UserGroup root = userComponentFactory.createGroup("Root");
+    private DefaultMutableTreeNode rootNode;
 
     private final String OPEN_USER_VIEW_BUTTON = "Open User View";
     private final String SHOW_USER_TTL_BUTTON = "Show Total Users";
@@ -27,7 +29,8 @@ public class AdminController implements ActionListener{
         adminControlPanel.setController(this);
 
         userDatabase.addRoot(root);
-
+        rootNode = new DefaultMutableTreeNode("Root");
+        adminControlPanel.createTree(rootNode);
     }
 
     public void openUserView(String id) {
@@ -71,6 +74,8 @@ public class AdminController implements ActionListener{
                 break;
 
         }
+
+        adminControlPanel.updateTree(rootNode);
     }
 
     public void openUserViewButtonPressed(){
@@ -80,6 +85,7 @@ public class AdminController implements ActionListener{
             adminControlPanel.setInfoLabel("The user does not exist");
         }else {
             new UserPanelController(new UserPanel(user.getId()), user);
+
         }
     }
 
@@ -91,6 +97,7 @@ public class AdminController implements ActionListener{
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
             userDatabase.addUser(userId, userComponentFactory.createUser(userId),group);
+
         }
     }
 
@@ -108,6 +115,8 @@ public class AdminController implements ActionListener{
             userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup);
         }
     }
+
+
 
     //Singleton
     public static AdminController getInstance(){

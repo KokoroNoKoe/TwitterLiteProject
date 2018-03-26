@@ -29,6 +29,7 @@ public class UserDatabase {
             allUsersAndGroupsMap.put(id, user);
             numOfUsers++;
             group.addUserComponent(user);
+            group.getTreeNode().add(user.getTreeNode());//test
             System.out.printf("User '%s' successfully added!\n", id);
 
         }
@@ -72,6 +73,7 @@ public class UserDatabase {
             allUsersAndGroupsMap.put(id, group);
             numOfGroups++;
             parentGroup.addUserComponent(group);
+            parentGroup.getTreeNode().add(group.getTreeNode());//added
             System.out.printf("Group '%s' successfully added!\n", id);
         }
     }

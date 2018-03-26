@@ -1,3 +1,4 @@
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
 
 public class User extends UserComponent implements Subject, Observer {
@@ -6,11 +7,12 @@ public class User extends UserComponent implements Subject, Observer {
     private ArrayList<String> followings = new ArrayList<>();
     private ArrayList<Tweet> feedList = new ArrayList<>();
 
-    private UserDBMS userDBMS = null;
 
+    private UserDBMS userDBMS = null;
 
     public User(String id) {
         this.id = id;
+        this.treeNode = new DefaultMutableTreeNode(id);
     }
 
     public String getId() {

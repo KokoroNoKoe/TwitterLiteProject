@@ -12,6 +12,7 @@ public class AdminControlPanel extends JPanel {
     public static AdminControlPanel instance = null;
 
     private JPanel treeViewPanel;
+    private JScrollPane treeScrollPane;
     private JTree userTree;
 
     private JButton addUserBtn, addGroupBtn, openUserViewBtn,
@@ -23,10 +24,9 @@ public class AdminControlPanel extends JPanel {
 
     private AdminControlPanel() {
         setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(500,500));
+        setPreferredSize(new Dimension(500, 500));
         createComponents();
         setLayout();
-
 
 
         JFrame frame = new JFrame();
@@ -37,7 +37,7 @@ public class AdminControlPanel extends JPanel {
 
     }
 
-    public void setController(ActionListener listener){
+    public void setController(ActionListener listener) {
         addUserBtn.addActionListener(listener);
         addGroupBtn.addActionListener(listener);
         openUserViewBtn.addActionListener(listener);
@@ -56,20 +56,38 @@ public class AdminControlPanel extends JPanel {
         return groupITextArea.getText();
     }
 
+    public JTree getUserTree() {
+        return userTree;
+    }
+
     public void setInfoLabel(String msg) {
         infoLabel.setText(msg);
+    }
+
+    public void createTree(DefaultMutableTreeNode treeNode) {
+        userTree = new JTree(treeNode);
+
+        treeScrollPane = new JScrollPane();
+        treeScrollPane.getViewport().setView(userTree);
+        treeScrollPane.setPreferredSize(new Dimension(100,190));
+        treeViewPanel.add(treeScrollPane);
+    }
+
+    public void updateTree(DefaultMutableTreeNode root){
+        userTree = new JTree(root);
+        treeScrollPane.getViewport().setView(userTree);
     }
 
     private void createComponents() {
 
         treeViewPanel = new JPanel();
-        treeViewPanel.setPreferredSize(new Dimension(200,200));
+        treeViewPanel.setPreferredSize(new Dimension(200, 200));
+
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
-        DefaultMutableTreeNode yuki = new DefaultMutableTreeNode("Yuki");
-        root.add(yuki);
+        //DefaultMutableTreeNode yuki = new DefaultMutableTreeNode("Yuki");
+        //root.add(yuki);
         userTree = new JTree(root);
-
 
         treeViewPanel.add(userTree);
 
