@@ -23,6 +23,8 @@ public class UserPanel extends JPanel {
         frame.pack();
         frame.setVisible(true);
 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation(dim.width/2-frame.getSize().width/2,dim.height/2-this.getSize().height/2);
     }
 
     public void setController(ActionListener controller){
