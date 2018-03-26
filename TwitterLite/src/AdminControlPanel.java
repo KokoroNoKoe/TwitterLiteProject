@@ -19,6 +19,8 @@ public class AdminControlPanel extends JPanel {
 
     private JTextArea userIdTextArea, groupITextArea;
 
+    private JLabel infoLabel;
+
     private AdminControlPanel() {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(500,500));
@@ -54,6 +56,10 @@ public class AdminControlPanel extends JPanel {
         return groupITextArea.getText();
     }
 
+    public void setInfoLabel(String msg) {
+        infoLabel.setText(msg);
+    }
+
     private void createComponents() {
 
         treeViewPanel = new JPanel();
@@ -79,6 +85,8 @@ public class AdminControlPanel extends JPanel {
         userIdTextArea = new JTextArea("idName");
         groupITextArea = new JTextArea("Root");
 
+        infoLabel = new JLabel("App Info");
+
     }
 
 
@@ -92,7 +100,9 @@ public class AdminControlPanel extends JPanel {
 
         layout.setHorizontalGroup(
                 layout.createSequentialGroup()
-                        .addComponent(treeViewPanel)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(treeViewPanel)
+                                .addComponent(infoLabel))
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(userIdTextArea)
                                 .addComponent(groupITextArea)
@@ -114,6 +124,7 @@ public class AdminControlPanel extends JPanel {
                                 .addComponent(userIdTextArea)
                                 .addComponent(addUserBtn))
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(infoLabel)
                                 .addComponent(groupITextArea)
                                 .addComponent(addGroupBtn))
                         .addComponent(openUserViewBtn)

@@ -31,6 +31,7 @@ public class UserDatabase {
 
     public void addRoot(UserGroup root){
         allUsersAndGroupsMap.put(root.getId(), root);
+        numOfGroups++;
     }
 
     public void addGroup(String id, UserComponent group, UserGroup parentGroup) {

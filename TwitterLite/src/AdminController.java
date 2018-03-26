@@ -36,60 +36,67 @@ public class AdminController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String source = e.getActionCommand();
 
-        String groupId;
-        String userId;
-
-
         switch (source) {
 
             case (OPEN_USER_VIEW_BUTTON):
                     new UserPanelController();
                 break;
+
             case (SHOW_USER_TTL_BUTTON):
-                System.out.println("TOTAL USERS: " + userDatabase.getNumOfUsers());
+                adminControlPanel.setInfoLabel("   TOTAL USERS:    "+ userDatabase.getNumOfUsers());
                 root.print();
                 System.out.println();
                 //adminControlPanel.set
                 break;
+
             case (SHOW_GRP_TTL_BUTTON):
-                System.out.println("TOTAL GROUPS: " + userDatabase.getNumOfGroups());
+                adminControlPanel.setInfoLabel("   TOTAL GROUPS:    "+ userDatabase.getNumOfGroups());
                 break;
+
             case (SHOW_MSG_TTL_BUTTON):
-                System.out.println("TOTAL MESSAGES: ");
+                adminControlPanel.setInfoLabel("   TOTAL MESSAGE:   ");
                 break;
+
             case (SHOW_POS_MSG_BUTTON):
-                System.out.println("POSITIVE MESSAGES: ");
+                adminControlPanel.setInfoLabel("   POSITIVE MESSAGE:  ");
                 break;
+
             case (ADD_USER):
-                userId = adminControlPanel.getUserId();
-                groupId = adminControlPanel.getGroupId();
-                UserGroup group = userDatabase.findGroup(groupId);
-                if (group == null) {
-                    System.out.println("Group does not exist");
-                } else {
-                    userDatabase.addUser(userId, userComponentFactory.createUser(userId),group);
-                }
+                    addUser();
                 break;
+
             case (ADD_GROUP):
-                groupId = adminControlPanel.getGroupId();
-                System.out.print("Enter a group id :");
-                Scanner scan = new Scanner(System.in);
-                String parent = scan.nextLine();
-                if(parent.equals(""))
-                    parent = "Root";
-                UserGroup parentGroup= userDatabase.findGroup(parent);
-                if (parent == null) {
-                    System.out.println("Group does not exist");
-                } else {
-                    userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup);
-                }
-
-
+                    addGroup();
                 break;
 
         }
     }
 
+    public void addUser() {
+        String userId = adminControlPanel.getUserId();
+        String groupId = adminControlPanel.getGroupId();
+        UserGroup group = userDatabase.findGroup(groupId);
+        if (group == null) {
+            adminControlPanel.setInfoLabel("Group does not exist");
+        } else {
+            userDatabase.addUser(userId, userComponentFactory.createUser(userId),group);
+        }
+    }
+
+    public void addGroup() {
+        String groupId = adminControlPanel.getGroupId();
+        System.out.print("Enter a group id :");
+        Scanner scan = new Scanner(System.in);
+        String parent = scan.nextLine();
+        if(parent.equals(""))
+            parent = "Root";
+        UserGroup parentGroup= userDatabase.findGroup(parent);
+        if (parent == null) {
+            adminControlPanel.setInfoLabel("Group does not exist");
+        } else {
+            userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup);
+        }
+    }
 
     //Singleton
     public static AdminController getInstance(){
