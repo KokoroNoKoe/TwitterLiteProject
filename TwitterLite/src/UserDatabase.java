@@ -28,7 +28,6 @@ public class UserDatabase {
         }
     }
 
-
     /**
      * Find a user reference from the map with the given key
      * @param id
@@ -53,7 +52,6 @@ public class UserDatabase {
         return null;
     }
 
-
     public void addRoot(UserGroup root){
         allUsersAndGroupsMap.put(root.getId(), root);
         numOfGroups++;
@@ -69,7 +67,6 @@ public class UserDatabase {
             System.out.printf("Group '%s' successfully added!\n", id);
         }
     }
-
 
     public void addTweet(Tweet tweet) {
         allTweets.add(tweet);
