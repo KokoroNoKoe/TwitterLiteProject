@@ -28,9 +28,6 @@ public class UserDatabase {
         }
     }
 
-<<<<<<< HEAD
-=======
-
     /**
      * Find a user reference from the map with the given key
      * @param id
@@ -55,8 +52,6 @@ public class UserDatabase {
         return null;
     }
 
-
->>>>>>> ce64a27017889907ee71049c6fdc97baa97ba860
     public void addRoot(UserGroup root){
         allUsersAndGroupsMap.put(root.getId(), root);
         numOfGroups++;
