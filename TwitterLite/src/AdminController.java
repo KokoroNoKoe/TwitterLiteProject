@@ -42,10 +42,11 @@ public class AdminController implements ActionListener{
                     new UserPanelController();
                 break;
             case (SHOW_USER_TTL_BUTTON):
-                System.out.println("TOTAL USERS: ");
+                System.out.println("TOTAL USERS: " + userDatabase.getNumOfUsers());
+                //adminControlPanel.set
                 break;
             case (SHOW_GRP_TTL_BUTTON):
-                System.out.println("TOTAL GROUPS: ");
+                System.out.println("TOTAL GROUPS: " + userDatabase.getNumOfGroups());
                 break;
             case (SHOW_MSG_TTL_BUTTON):
                 System.out.println("TOTAL MESSAGES: ");
@@ -59,8 +60,6 @@ public class AdminController implements ActionListener{
                 break;
             case (ADD_GROUP):
                 String groupId = adminControlPanel.getGroupId();
-                System.out.println("Group ID: "+groupId);
-                //userDatabase.addGroup(groupId, new UserGroup(groupId));
                 userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId));
                 break;
 

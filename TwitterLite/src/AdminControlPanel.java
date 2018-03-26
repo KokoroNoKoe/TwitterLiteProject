@@ -18,7 +18,6 @@ public class AdminControlPanel extends JPanel {
 
     private JTextArea userIdTextArea, groupITextArea;
 
-
     private AdminControlPanel() {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(400,400));

@@ -12,11 +12,14 @@ public class UserDatabase {
 
     /**
      * add an user to a HashMap
+     *
      * @param id
      * @param user
      */
     public void addUser(String id, UserComponent user) {
-        if(user != null) {
+        if (doesIdExist(id)) {
+            System.out.println("User name already exist");
+        } else {
             allUsersAndGroupsMap.put(id, user);
             numOfUsers++;
         }
@@ -24,23 +27,31 @@ public class UserDatabase {
 
     /**
      * Adds a group to a hash map
+     *
      * @param id
      * @param group
      */
     public void addGroup(String id, UserComponent group) {
-        if(group !=null) {
+        if (doesIdExist(id)) {
+            System.out.println("Id already exists");
+        } else {
             allUsersAndGroupsMap.put(id, group);
             numOfGroups++;
         }
     }
 
 
-    public void addTweet(Tweet tweet){
+    public void addTweet(Tweet tweet) {
         allTweets.add(tweet);
         numOfTweets++;
     }
 
-
+    private boolean doesIdExist(String id) {
+        UserComponent user = allUsersAndGroupsMap.get(id);
+        if (user == null)
+            return false;
+        return true;
+    }
 
     //getters
     public int getNumOfUsers() {
