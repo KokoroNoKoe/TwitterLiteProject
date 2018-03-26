@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserDatabase {
+    private static UserDatabase instance = null;
+
     private int numOfUsers;
     private int numOfGroups;
     private int numOfTweets;
     private int numOfPositiveMsg;
     private ArrayList<Tweet> allTweets;
     private HashMap<String, UserComponent> allUsersAndGroupsMap = new HashMap<>();
-
-    private static UserDatabase instance = null;
 
     private UserDatabase(){
 
