@@ -5,8 +5,11 @@ public class PositiveWordList extends ArrayList<String> {
     //test
     public final static String[]testWords = {"Good", "Great", "Excellent"};
 
+    /**
+     * Constructor
+     */
     public PositiveWordList(){
-
+        addTestWords();//add the test words to this
     }
 
     //test
