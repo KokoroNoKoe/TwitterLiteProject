@@ -12,30 +12,9 @@ public class User extends UserComponent implements Subject, Observer {
         this.id = id;
     }
 
-
-    public void follow(String id) {
-        //System.out.println("follow called");
-        followings.add(id); //does not see the news feed before it follows
-
-    }
-
-    public void post(String msg) {
-
-        //System.out.println("post called");
-
-
-    }
-
-    public void addFeed(String msg) {
-        Tweet tweet = Tweet.createTweet(getId(), msg);
-        feedList.add(tweet);
-        //System.out.printf("addFeed in User is called\n%s\n", tweet);
-    }
-
     public String getId() {
         return id;
     }
-
 
     public String getEveryNewsfeed() {
         String everyMsg = "<html>";
@@ -56,7 +35,24 @@ public class User extends UserComponent implements Subject, Observer {
     }
 
 
+    public void follow(String id) {
+        //System.out.println("follow called");
+        followings.add(id); //does not see the news feed before it follows
 
+    }
+
+    public void post(String msg) {
+
+        //System.out.println("post called");
+
+
+    }
+
+    public void addFeed(String msg) {
+        Tweet tweet = Tweet.createTweet(getId(), msg);
+        feedList.add(tweet);
+        //System.out.printf("addFeed in User is called\n%s\n", tweet);
+    }
 
     @Override
     public void update() {
