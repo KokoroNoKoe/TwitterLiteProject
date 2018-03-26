@@ -32,7 +32,6 @@ public class UserPanel extends JPanel {
     }
 
     public void setController(ActionListener controller){
-        System.out.println("setController called");
         followBtn.addActionListener(controller);
         postBtn.addActionListener(controller);
     }
