@@ -23,6 +23,8 @@ public class UserDatabase {
             allUsersAndGroupsMap.put(id, user);
             numOfUsers++;
             group.addUserComponent(user);
+            System.out.printf("User '%s' successfully added!\n", id);
+
         }
     }
 
@@ -38,6 +40,7 @@ public class UserDatabase {
             allUsersAndGroupsMap.put(id, group);
             numOfGroups++;
             parentGroup.addUserComponent(group);
+            System.out.printf("Group '%s' successfully added!\n", id);
         }
     }
 

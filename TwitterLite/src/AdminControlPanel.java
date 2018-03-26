@@ -76,7 +76,7 @@ public class AdminControlPanel extends JPanel {
         showMsgTotalBtn = new JButton("Show Total Messages");
         showPosMsgNumBtn = new JButton("Show Total Positives");
 
-        userIdTextArea = new JTextArea("enter user id");
+        userIdTextArea = new JTextArea("idName");
         groupITextArea = new JTextArea("Root");
 
     }

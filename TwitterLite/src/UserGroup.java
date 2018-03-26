@@ -21,13 +21,13 @@ public class UserGroup extends UserComponent {
 
     @Override
     public void print() {
-        System.out.print("(["+ getId() + "]");
+        System.out.print(" (["+ getId() + "]");
         Iterator<UserComponent> iterator = userList.iterator();
         while (iterator.hasNext()){
             UserComponent userComponent = (UserComponent)iterator.next();
             userComponent.print();
         }
-        System.out.print(") ");
+        System.out.print(")");
     }
 }
 

@@ -50,7 +50,7 @@ public class User extends UserComponent implements Subject, Observer {
 
     @Override
     public void print() {
-       System.out.print(" "+ getId());
+       System.out.print(" \""+ getId()+"\"");
     }
 
 

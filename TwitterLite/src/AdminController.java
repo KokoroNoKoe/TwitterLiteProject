@@ -48,6 +48,7 @@ public class AdminController implements ActionListener{
             case (SHOW_USER_TTL_BUTTON):
                 System.out.println("TOTAL USERS: " + userDatabase.getNumOfUsers());
                 root.print();
+                System.out.println();
                 //adminControlPanel.set
                 break;
             case (SHOW_GRP_TTL_BUTTON):
@@ -71,9 +72,11 @@ public class AdminController implements ActionListener{
                 break;
             case (ADD_GROUP):
                 groupId = adminControlPanel.getGroupId();
-                System.out.println("Enter a group id :");
+                System.out.print("Enter a group id :");
                 Scanner scan = new Scanner(System.in);
                 String parent = scan.nextLine();
+                if(parent.equals(""))
+                    parent = "Root";
                 UserGroup parentGroup= userDatabase.findGroup(parent);
                 if (parent == null) {
                     System.out.println("Group does not exist");
