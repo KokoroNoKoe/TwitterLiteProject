@@ -36,6 +36,7 @@ public class UserPanelController implements ActionListener {
 
     public void followPressed(){
         user.follow(userPanel.getUserId());
+        userPanel.updateFollowings(user.getEveryFollowingsString());
     }
 
     public void postPressed(){

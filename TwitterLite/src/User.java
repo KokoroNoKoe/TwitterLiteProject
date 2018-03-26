@@ -46,6 +46,17 @@ public class User extends UserComponent implements Subject, Observer {
         return everyMsg;
     }
 
+    public String getEveryFollowingsString(){
+        String users = "<html>";
+        for (String userId : followings) {
+            users += userId + "<br>";
+        }
+        users += "<html/>";
+        return users;
+    }
+
+
+
 
     @Override
     public void update() {
