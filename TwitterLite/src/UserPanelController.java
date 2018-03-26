@@ -7,6 +7,9 @@ public class UserPanelController implements ActionListener {
     private User user;
     private UserPanel userPanel;
 
+    private final String FOLLOW_BUTTON = "FOLLOW";
+    private final String POST_BUTTON = "POST";
+
 
     public UserPanelController() {
         userPanel = new UserPanel();
@@ -17,7 +20,14 @@ public class UserPanelController implements ActionListener {
     public void actionPerformed(ActionEvent e){
         String source = e.getActionCommand();
 
-        System.out.println(source);
+        switch (source) {
+            case (FOLLOW_BUTTON):
+
+                break;
+            case (POST_BUTTON):
+
+                break;
+        }
 
 
     }
