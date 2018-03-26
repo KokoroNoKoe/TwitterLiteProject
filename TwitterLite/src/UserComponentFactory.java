@@ -11,5 +11,5 @@ public class UserComponentFactory {
             return new UserGroup(id);
     }
 
-
+  //
 }
