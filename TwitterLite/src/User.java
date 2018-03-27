@@ -24,7 +24,7 @@ public class User extends UserComponent implements Subject, Observer {
             this.userDBMS = userDBMS;
     }
 
-    public String getEveryNewsfeed() {
+    public String getEveryNewsFeed() {
         String everyMsg = "<html>";
         for (Tweet msg : feedList) {
             everyMsg += msg + "<br>";

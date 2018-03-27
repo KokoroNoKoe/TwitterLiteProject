@@ -26,7 +26,7 @@ public class UserPanelController implements ActionListener{
         class TimerListener implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
-                userPanel.updateNewsFeed(user.getEveryNewsfeed());
+                userPanel.updateNewsFeed(user.getEveryNewsFeed());
                 userPanel.updateFollowings(user.getEveryFollowingsString());
             }
         }
@@ -58,7 +58,7 @@ public class UserPanelController implements ActionListener{
 
     public void postPressed(){
         user.post(userPanel.getTweetToPost());
-        userPanel.updateNewsFeed(user.getEveryNewsfeed());
+        userPanel.updateNewsFeed(user.getEveryNewsFeed());
     }
 
 }
