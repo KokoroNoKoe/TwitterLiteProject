@@ -96,8 +96,8 @@ public class AdminController implements ActionListener{
         if (group == null) {
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
-            userDatabase.addUser(userId, userComponentFactory.createUser(userId),group);
-            //adminControlPanel.updateTree(new DefaultMutableTreeNode(userId));
+            if (userDatabase.addUser(userId, userComponentFactory.createUser(userId),group))
+                adminControlPanel.updateTree(new DefaultMutableTreeNode(userId));
         }
     }
 
@@ -112,8 +112,8 @@ public class AdminController implements ActionListener{
         if (parent == null) {
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
-            userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup);
-            //adminControlPanel.updateTree(new DefaultMutableTreeNode(groupId));
+            if (userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup))
+                adminControlPanel.updateTree(new DefaultMutableTreeNode(groupId));
         }
     }
 
