@@ -64,6 +64,7 @@ public class User extends UserComponent implements Subject, Observer {
         Tweet tweet = Tweet.createTweet(getId(), msg);
         last = tweet;
         addFeed(tweet);
+        userDBMS.addNewTweet(tweet);
         notifyObservers();
         //System.out.println("post called");
 
@@ -74,15 +75,6 @@ public class User extends UserComponent implements Subject, Observer {
         feedList.add(tweet);
     }
 
-    //when you post something
-    public void notifyFollowers(){
-
-    }
-
-    //when
-    public void notifyFollowings(){
-
-    }
 
     @Override
     public void update(Tweet tweet) {

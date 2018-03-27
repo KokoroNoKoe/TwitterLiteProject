@@ -20,6 +20,10 @@ public class UserDBMS {
         return user;
     }
 
+    public void addNewTweet(Tweet tweet){
+        userDatabase.addTweet(tweet);
+    }
+
     //Constructor
     private UserDBMS(UserDatabase userDatabase) {
         this.userDatabase = userDatabase;

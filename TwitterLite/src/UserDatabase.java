@@ -10,10 +10,16 @@ public class UserDatabase {
     private int numOfPositiveMsg;
     private ArrayList<Tweet> allTweets;
     private HashMap<String, UserComponent> allUsersAndGroupsMap = new HashMap<>();
+    private PositiveWordList positiveList = new PositiveWordList();
+
+
+
 
     private UserDatabase(){
 
     }
+
+
 
 
     /**
@@ -82,6 +88,13 @@ public class UserDatabase {
     public void addTweet(Tweet tweet) {
         allTweets.add(tweet);
         numOfTweets++;
+        incrementPositive(tweet);
+    }
+
+    public void incrementPositive(Tweet tweet){
+        if(positiveList.isPositive(tweet.getMsg())){
+            numOfPositiveMsg++;
+        }
     }
 
     private boolean doesIdExist(String id) {
