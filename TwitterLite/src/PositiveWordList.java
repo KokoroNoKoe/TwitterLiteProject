@@ -41,7 +41,7 @@ public class PositiveWordList extends ArrayList<String> {
      * @return
      */
     public boolean isPositive(String msg){
-        System.out.println(msg);
+        //System.out.println(msg);
         for(String stored: this) {
             System.out.println(stored + "\n");
             return msg.toLowerCase().contains(stored.toLowerCase());

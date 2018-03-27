@@ -1,6 +1,7 @@
 import com.sun.deploy.uitoolkit.impl.awt.ui.SwingConsoleWindow;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
@@ -23,10 +24,10 @@ public class AdminControlPanel extends JPanel {
 
     private JLabel infoLabel;
 
-    private AdminControlPanel() {
+    private AdminControlPanel(DefaultMutableTreeNode root) {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(500, 500));
-        createComponents();
+        createComponents(root);
         setLayout();
 
 
@@ -47,7 +48,10 @@ public class AdminControlPanel extends JPanel {
         showMsgTotalBtn.addActionListener(listener);
         showPosMsgNumBtn.addActionListener(listener);
 
+        userTree.addTreeSelectionListener((TreeSelectionListener)listener);
+
     }
+
 
     public String getUserId() {
         return userIdTextArea.getText();
@@ -67,36 +71,42 @@ public class AdminControlPanel extends JPanel {
 
     public void createTree(DefaultMutableTreeNode treeNode) {
         DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
-        DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
         root.add(treeNode);
         model.reload(root);
-       // treeScrollPane = new JScrollPane();
+        // treeScrollPane = new JScrollPane();
         //treeScrollPane.getViewport().setView(userTree);
 
         //treeViewPanel.add(treeScrollPane);
     }
-
-    public void updateTree(DefaultMutableTreeNode treeNode){
+/*
+    public void updateTreeOld(DefaultMutableTreeNode treeNode){
         DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
         DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
         root.add(treeNode);
         model.reload(root);
     }
+    */
 
-    private void createComponents() {
+    public void updateTree() {
+        DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
+        model.reload(root);
+    }
+
+    private void createComponents(DefaultMutableTreeNode root) {
 
         treeViewPanel = new JPanel();
         treeViewPanel.setPreferredSize(new Dimension(200, 200));
         treeScrollPane = new JScrollPane();
 
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
         //DefaultMutableTreeNode yuki = new DefaultMutableTreeNode("Yuki");
         //root.add(yuki);
 
         userTree = new JTree(root);
 
         treeScrollPane.getViewport().setView(userTree);
-        treeScrollPane.setPreferredSize(new Dimension(100,190));
+        treeScrollPane.setPreferredSize(new Dimension(100, 190));
 
         treeViewPanel.add(treeScrollPane);
 
@@ -165,9 +175,9 @@ public class AdminControlPanel extends JPanel {
     }
 
     //Singleton
-    public static AdminControlPanel getInstance() {
+    public static AdminControlPanel getInstance(DefaultMutableTreeNode node) {
         if (instance == null)
-            return new AdminControlPanel();
+            return new AdminControlPanel(node);
         return instance;
     }
 }

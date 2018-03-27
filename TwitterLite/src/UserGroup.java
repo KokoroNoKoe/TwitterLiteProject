@@ -10,7 +10,7 @@ public class UserGroup extends UserComponent {
 
     public UserGroup(String id) {
         this.id = id;
-        this.treeNode = new DefaultMutableTreeNode(id);
+        //this.treeNode = new DefaultMutableTreeNode(id);
     }
 
     public void addUserComponent(UserComponent user) {

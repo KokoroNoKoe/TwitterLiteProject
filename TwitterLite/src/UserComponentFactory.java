@@ -1,5 +1,4 @@
-
-
+import javax.swing.tree.DefaultMutableTreeNode;
 
 public class UserComponentFactory {
 
@@ -9,15 +8,19 @@ public class UserComponentFactory {
         this.userDBMS = userDBMS;
     }
 
-    public User createUser(String id) {
+    public User createUser(String id, DefaultMutableTreeNode node) {
         User user = new User(id);
         user.setUserDBMS(userDBMS);
+        user.setTreeNode(node);
         return user;
     }
 
-    public UserGroup createGroup(String id) {
-        return new UserGroup(id);
+    public UserGroup createGroup(String id, DefaultMutableTreeNode node) {
+        UserGroup group = new UserGroup(id);
+        group.setTreeNode(node);
+        return group;
     }
+
 
 
 }

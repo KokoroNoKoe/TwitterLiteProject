@@ -10,6 +10,10 @@ public abstract class UserComponent {
         return treeNode;
     }
 
+    public void setTreeNode(DefaultMutableTreeNode node){
+        this.treeNode = node;
+    }
+
     public void print() {
         throw new UnsupportedOperationException();
     }

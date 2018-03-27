@@ -12,7 +12,7 @@ public class User extends UserComponent implements Subject, Observer {
 
     public User(String id) {
         this.id = id;
-        this.treeNode = new DefaultMutableTreeNode(id);
+        //this.treeNode = new DefaultMutableTreeNode(id);
     }
 
     public String getId() {
