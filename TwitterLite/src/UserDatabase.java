@@ -8,7 +8,7 @@ public class UserDatabase {
     private int numOfGroups;
     private int numOfTweets;
     private int numOfPositiveMsg;
-    private ArrayList<Tweet> allTweets;
+    private ArrayList<Tweet> allTweets = new ArrayList<>();
     private HashMap<String, UserComponent> allUsersAndGroupsMap = new HashMap<>();
     private PositiveWordList positiveList = new PositiveWordList();
 

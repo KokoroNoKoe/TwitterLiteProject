@@ -19,7 +19,7 @@ public class PositiveWordList extends ArrayList<String> {
 
     /**
      * Adds a positive word to this
-     * @param word
+     * @param
      */
     public void addAPositiveWord(String posWord){
         add(posWord);
@@ -37,11 +37,16 @@ public class PositiveWordList extends ArrayList<String> {
 
     /**
      * Checks if this PositiveWordList contains the word given
-     * @param posWord
+     * @param
      * @return
      */
-    public boolean isPositive(String posWord){
-        return contains(posWord);
+    public boolean isPositive(String msg){
+        System.out.println(msg);
+        for(String stored: this) {
+            System.out.println(stored + "\n");
+            return msg.toLowerCase().contains(stored.toLowerCase());
+        }
+        return false;
     }
 
 }

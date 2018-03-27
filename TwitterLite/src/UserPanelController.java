@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class UserPanelController implements ActionListener{
 
@@ -16,6 +17,21 @@ public class UserPanelController implements ActionListener{
         this.userId = user.getId();
         this.userPanel = userPanel;
         this.userPanel.setController(this);
+        startTimer();
+    }
+
+    public void startTimer() {
+
+
+        class TimerListener implements ActionListener{
+            @Override
+            public void actionPerformed(ActionEvent e){
+                userPanel.updateNewsFeed(user.getEveryNewsfeed());
+            }
+        }
+
+        Timer t = new Timer(1000 , new TimerListener() );
+        t.start();
     }
 
     @Override
