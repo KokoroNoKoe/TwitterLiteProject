@@ -47,22 +47,22 @@ public class AdminController implements ActionListener{
                 break;
 
             case (SHOW_USER_TTL_BUTTON):
-                adminControlPanel.setInfoLabel("   TOTAL USERS:    "+ userDatabase.getNumOfUsers());
+                adminControlPanel.setInfoLabel("<html>TOTAL<br>USERS:  "+ userDatabase.getNumOfUsers()+"</html>");
                 root.print();
                 System.out.println();
                 //adminControlPanel.set
                 break;
 
             case (SHOW_GRP_TTL_BUTTON):
-                adminControlPanel.setInfoLabel("   TOTAL GROUPS:    "+ userDatabase.getNumOfGroups());
+                adminControlPanel.setInfoLabel("<html>TOTAL<br>GROUPS:  "+ userDatabase.getNumOfGroups()+"</html>");
                 break;
 
             case (SHOW_MSG_TTL_BUTTON):
-                adminControlPanel.setInfoLabel("   TOTAL MESSAGE:   ");
+                adminControlPanel.setInfoLabel("<html>TOTAL<br>MESSAGE:  "+userDatabase.getNumOfTweets()+"</html>");
                 break;
 
             case (SHOW_POS_MSG_BUTTON):
-                adminControlPanel.setInfoLabel("   POSITIVE MESSAGE:  ");
+                adminControlPanel.setInfoLabel("<html>POSITIVE<br>MESSAGE:  "+userDatabase.getNumOfPositiveMsg()+"</html>");
                 break;
 
             case (ADD_USER):
@@ -96,8 +96,8 @@ public class AdminController implements ActionListener{
         if (group == null) {
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
-            userDatabase.addUser(userId, userComponentFactory.createUser(userId),group);
-            //adminControlPanel.updateTree(new DefaultMutableTreeNode(userId));
+            if (userDatabase.addUser(userId, userComponentFactory.createUser(userId),group))
+                adminControlPanel.updateTree(new DefaultMutableTreeNode(userId));
         }
     }
 
@@ -112,8 +112,8 @@ public class AdminController implements ActionListener{
         if (parent == null) {
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
-            userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup);
-            //adminControlPanel.updateTree(new DefaultMutableTreeNode(groupId));
+            if (userDatabase.addGroup(groupId,userComponentFactory.createGroup(groupId), parentGroup))
+                adminControlPanel.updateTree(new DefaultMutableTreeNode(groupId));
         }
     }
 

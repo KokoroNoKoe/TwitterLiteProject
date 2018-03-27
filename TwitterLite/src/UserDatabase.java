@@ -28,16 +28,16 @@ public class UserDatabase {
      * @param id
      * @param user
      */
-    public void addUser(String id, UserComponent user, UserGroup group) {
+    public boolean addUser(String id, UserComponent user, UserGroup group) {
         if (doesIdExist(id)) {
             System.out.println("User name already exist");
+            return false;
         } else {
             allUsersAndGroupsMap.put(id, user);
             numOfUsers++;
             group.addUserComponent(user);
-            group.getTreeNode().add(user.getTreeNode());//test
             System.out.printf("User '%s' successfully added!\n", id);
-
+            return true;
         }
     }
 
@@ -72,16 +72,16 @@ public class UserDatabase {
         numOfGroups++;
     }
 
-    public void addGroup(String id, UserComponent group, UserGroup parentGroup) {
+    public boolean addGroup(String id, UserComponent group, UserGroup parentGroup) {
         if (doesIdExist(id)) {
             System.out.println("Id already exists");
+            return false;
         } else {
             allUsersAndGroupsMap.put(id, group);
             numOfGroups++;
             parentGroup.addUserComponent(group);
-            parentGroup.getTreeNode().add(group.getTreeNode());//added
             System.out.printf("Group '%s' successfully added!\n", id);
-
+            return true;
         }
     }
 
