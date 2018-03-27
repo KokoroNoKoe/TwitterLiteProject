@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -7,11 +8,14 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class UserPanel extends JPanel {
 
     private JPanel currentFollowingsPanel, newsFeedPanel;
+    private JScrollPane followingScrollPane, newsFeedScrollPane;
     private JLabel followingsLabel, newsFeedLabel;
     private JTextArea userIdTextArea, tweetTextArea;
     private JButton followBtn, postBtn;
 
-
+    private Color bluish = new Color(179,230,255),
+                greenish = new Color(204,255,153),
+                purplish = new Color(153,51,255);
 
     public UserPanel(String title) {
         createComponents();
@@ -56,26 +60,39 @@ public class UserPanel extends JPanel {
 
 
     private void createComponents() {
+
         currentFollowingsPanel = new JPanel();
         followingsLabel = new JLabel("Followings");
+        followingsLabel.setBorder(BorderFactory.createEtchedBorder());
+        followingScrollPane = new JScrollPane(followingsLabel);
+        followingScrollPane.setPreferredSize(new Dimension(260,140));
         newsFeedPanel = new JPanel();
         newsFeedLabel = new JLabel("News Feed");
+        newsFeedLabel.setBorder(BorderFactory.createEtchedBorder());
+        newsFeedScrollPane = new JScrollPane(newsFeedLabel);
+        newsFeedScrollPane.setPreferredSize(new Dimension(260,140));
         userIdTextArea = new JTextArea("User Id");
+        userIdTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        userIdTextArea.setBackground(greenish);
         tweetTextArea = new JTextArea("tweet here");
+        tweetTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        tweetTextArea.setBackground(greenish);
         followBtn = new JButton("Follow");
+        followBtn.setPreferredSize(new Dimension(200,50));
+        followBtn.setBorderPainted(true);
         postBtn = new JButton("Post");
+        postBtn.setPreferredSize(new Dimension(200,50));
 
-
-        currentFollowingsPanel.setBackground(Color.CYAN);
-        newsFeedPanel.setBackground(Color.CYAN);
-
+        currentFollowingsPanel.setBackground(bluish);
+        newsFeedPanel.setBackground(bluish);
+        this.setBackground(purplish);
 
     }
 
     private void setLayout() {
 
-        currentFollowingsPanel.add(followingsLabel);
-        newsFeedPanel.add(newsFeedLabel);
+        currentFollowingsPanel.add(followingScrollPane);
+        newsFeedPanel.add(newsFeedScrollPane);
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);

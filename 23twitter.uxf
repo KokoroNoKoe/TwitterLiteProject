@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>9</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>99</x>
-      <y>342</y>
-      <w>207</w>
-      <h>198</h>
+      <x>196</x>
+      <y>420</y>
+      <w>161</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>User
 --
@@ -22,16 +22,18 @@
 +addFeed(Tweet): void
 +update(Tweet): void
 +notifyObserver(Observer): void
-</panel_attributes>
++registerObserver(Observer): void
++removeObserver(Observer): void
++print(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>333</x>
-      <y>369</y>
-      <w>270</w>
-      <h>108</h>
+      <x>378</x>
+      <y>441</y>
+      <w>210</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>UserGroup
 --
@@ -45,21 +47,25 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>945</x>
-      <y>549</y>
-      <w>216</w>
-      <h>171</h>
+      <x>854</x>
+      <y>581</y>
+      <w>168</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>UserPanel
 --
 -currentFollowingsPanel: JPanel
 -newsFeedPanel: JPanel
+-followingLabel: JLabel
+-newsFeedLabel: JLabel
 -userIdTextArea: JTextArea
 -tweetTextArea: JTextArea
 -followBtn: JButton
 -postBtn: JButton
 --
 +setController(ActionListener): void
++updateFollowings(String): void
++updateNewsFeed(String): void
 -createComponents(): void
 -setLayout(): void
 </panel_attributes>
@@ -68,10 +74,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>279</x>
-      <y>171</y>
-      <w>135</w>
-      <h>108</h>
+      <x>336</x>
+      <y>287</y>
+      <w>84</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>/&lt;&lt;Abstract&gt;&gt;/
 /UserComponent/
@@ -84,10 +90,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>63</x>
-      <y>666</y>
-      <w>189</w>
-      <h>108</h>
+      <x>168</x>
+      <y>672</y>
+      <w>147</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Tweet
 --
@@ -101,10 +107,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>369</x>
-      <y>567</y>
-      <w>261</w>
-      <h>72</h>
+      <x>406</x>
+      <y>595</y>
+      <w>203</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>UserComponentFactory
 --
@@ -115,31 +121,34 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>666</x>
-      <y>36</y>
-      <w>225</w>
-      <h>189</h>
+      <x>637</x>
+      <y>252</y>
+      <w>175</w>
+      <h>147</h>
     </coordinates>
-    <panel_attributes>AdminControler
+    <panel_attributes>AdminController
 --
+-instance: AdminController
 -adminControlPanel: AdminControlPanel
 -userComponentFactory: UserComponentFactory
 -userDatabase: UserDatabase
+userDBMS: UserDBMS
 -root: UserGroup
 --
 +actionPerformed(ActionEvent): void
++openUserViewButtonPressed(): void
 +addUser(): void
 +addGroup(): void
-+getInstance(): AdminControlle</panel_attributes>
++getInstance(): AdminController</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>837</y>
-      <w>234</w>
-      <h>117</h>
+      <x>140</x>
+      <y>805</y>
+      <w>182</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>PositiveWordList
 --
@@ -152,10 +161,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>0</y>
-      <w>261</w>
-      <h>117</h>
+      <x>189</x>
+      <y>154</y>
+      <w>203</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>/&lt;&lt;Interface&gt;&gt;/
 /Subject/
@@ -169,10 +178,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
-      <y>873</y>
-      <w>315</w>
-      <h>99</h>
+      <x>560</x>
+      <y>833</y>
+      <w>245</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>DebugDisplay
 --
@@ -186,10 +195,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>297</y>
-      <w>135</w>
-      <h>54</h>
+      <x>805</x>
+      <y>21</y>
+      <w>105</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>TestDriver
 --
@@ -200,54 +209,54 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>783</x>
-      <y>216</y>
-      <w>27</w>
-      <h>99</h>
+      <x>721</x>
+      <y>56</y>
+      <w>140</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;280.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>198</x>
-      <y>270</y>
-      <w>153</w>
-      <h>90</h>
+      <x>273</x>
+      <y>343</y>
+      <w>119</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>270</y>
-      <w>117</w>
-      <h>117</h>
+      <x>392</x>
+      <y>343</y>
+      <w>91</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;140.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>126</x>
-      <y>531</y>
-      <w>72</w>
-      <h>153</h>
+      <x>217</x>
+      <y>588</y>
+      <w>56</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>60.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>60.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>126</x>
-      <y>765</y>
-      <w>36</w>
-      <h>90</h>
+      <x>217</x>
+      <y>749</y>
+      <w>28</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>20.0;10.0;10.0;80.0</additional_attributes>
@@ -255,21 +264,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
-      <y>531</y>
-      <w>99</w>
-      <h>99</h>
+      <x>343</x>
+      <y>588</y>
+      <w>77</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0;90.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;90.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
-      <y>468</y>
-      <w>54</w>
-      <h>117</h>
+      <x>483</x>
+      <y>518</y>
+      <w>42</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;110.0</additional_attributes>
@@ -277,10 +286,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>108</y>
-      <w>54</w>
-      <h>81</h>
+      <x>329</x>
+      <y>238</y>
+      <w>42</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;70.0</additional_attributes>
@@ -288,10 +297,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>108</y>
-      <w>99</w>
-      <h>81</h>
+      <x>392</x>
+      <y>238</y>
+      <w>77</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;70.0</additional_attributes>
@@ -299,10 +308,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>684</x>
-      <y>495</y>
-      <w>207</w>
-      <h>306</h>
+      <x>651</x>
+      <y>539</y>
+      <w>161</w>
+      <h>238</h>
     </coordinates>
     <panel_attributes>AdminControlPanel
 --
@@ -327,10 +336,10 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1017</x>
-      <y>477</y>
-      <w>108</w>
-      <h>36</h>
+      <x>910</x>
+      <y>525</y>
+      <w>84</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=.
 Views</panel_attributes>
@@ -339,10 +348,10 @@ Views</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>117</x>
-      <y>198</y>
-      <w>108</w>
-      <h>36</h>
+      <x>210</x>
+      <y>308</y>
+      <w>84</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=.
 Models</panel_attributes>
@@ -351,10 +360,10 @@ Models</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1044</x>
-      <y>252</y>
-      <w>108</w>
-      <h>36</h>
+      <x>861</x>
+      <y>378</y>
+      <w>84</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=.
 Controllers
@@ -364,17 +373,20 @@ Controllers
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>945</x>
-      <y>81</y>
-      <w>135</w>
-      <h>108</h>
+      <x>833</x>
+      <y>252</y>
+      <w>140</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>UserPanelController
 --
--userId : String
--user : User
+-userId: String
+-user: User
+-userPanel: UserPanel
 --
-
++actionPerformed(ActionEvent): void
++followPressed(): void
++postPressed(): void
 +update() : void
 </panel_attributes>
     <additional_attributes/>
@@ -382,21 +394,21 @@ Controllers
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>180</y>
-      <w>162</w>
-      <h>135</h>
+      <x>861</x>
+      <y>56</y>
+      <w>56</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>60.0;280.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>387</x>
-      <y>9</y>
-      <w>135</w>
-      <h>108</h>
+      <x>420</x>
+      <y>161</y>
+      <w>105</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>/&lt;&lt;Interface&gt;&gt;/
 /Observer/
@@ -408,24 +420,25 @@ Controllers
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>531</y>
-      <w>315</w>
-      <h>378</h>
+      <x>329</x>
+      <y>588</y>
+      <w>245</w>
+      <h>273</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;400.0;330.0;400.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;370.0;330.0;370.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>99</x>
-      <y>999</y>
-      <w>306</w>
-      <h>234</h>
+      <x>1071</x>
+      <y>434</y>
+      <w>273</w>
+      <h>217</h>
     </coordinates>
     <panel_attributes>UserDatabase
 --
+-instance: UserDatabase
 -numOfUsers: int
 -numOfGroups: int
 -numOfTweets: int
@@ -434,11 +447,32 @@ Controllers
 -allUsersAndGroupsMap: HashMap&lt;String, UserComponent&gt;
 --
 +addUser(String, UserComponent, UserGroup): void
++getUserFromDatabase(String): User
++getGroupFromDatabase(String): UserGroup
 +addRoot(UserGroup): void
 +addGroup(String,UserComponent,UserGroup): void
 +addTweet(Tweet): void
 -doesIdExist(String): boolean
 +findGroud(String): UserGroup
++isUser(UserComponent): boolean
++isGroup(UserComponent): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1001</x>
+      <y>252</y>
+      <w>154</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>UserDBMS
+--
+-instance: UserDBMS
+-userDatabase: UserDatabase
+--
+getInstance(UserDatabase): UserDBMS
 </panel_attributes>
     <additional_attributes/>
   </element>

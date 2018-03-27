@@ -24,6 +24,10 @@ public class AdminControlPanel extends JPanel {
 
     private JLabel infoLabel;
 
+    private Color bluish = new Color(179,230,255),
+            greenish = new Color(204,255,153),
+            purplish = new Color(153,51,255);
+
     private AdminControlPanel(DefaultMutableTreeNode root) {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(500, 500));
@@ -100,16 +104,14 @@ public class AdminControlPanel extends JPanel {
         treeViewPanel.setPreferredSize(new Dimension(200, 200));
         treeScrollPane = new JScrollPane();
 
-        //DefaultMutableTreeNode yuki = new DefaultMutableTreeNode("Yuki");
-        //root.add(yuki);
-
         userTree = new JTree(root);
+        userTree.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        userTree.setBackground(greenish);
 
         treeScrollPane.getViewport().setView(userTree);
-        treeScrollPane.setPreferredSize(new Dimension(100, 190));
+        treeScrollPane.setPreferredSize(new Dimension(130, 260));
 
         treeViewPanel.add(treeScrollPane);
-
 
         addUserBtn = new JButton("Add User");
         addGroupBtn = new JButton("Add Group");
@@ -120,9 +122,14 @@ public class AdminControlPanel extends JPanel {
         showPosMsgNumBtn = new JButton("Show Total Positives");
 
         userIdTextArea = new JTextArea("idName");
+        userIdTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         groupITextArea = new JTextArea("Root");
+        groupITextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         infoLabel = new JLabel("App Info");
+        infoLabel.setBorder(BorderFactory.createEtchedBorder());
+
+        this.setBackground(bluish);
 
     }
 
