@@ -27,6 +27,7 @@ public class UserPanelController implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
                 userPanel.updateNewsFeed(user.getEveryNewsfeed());
+                userPanel.updateFollowings(user.getEveryFollowingsString());
             }
         }
 

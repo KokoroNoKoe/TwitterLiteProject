@@ -44,7 +44,7 @@ public class User extends UserComponent implements Subject, Observer {
 
 
     public boolean follow(String id) {
-        if (userDBMS.doesUserIdExist(id) && !followings.contains(id)) {
+        if (userDBMS.doesUserIdExist(id) && !followings.contains(id) && !id.equals(this.id)) {
             followings.add(id); //does not see the news feed before it follows
             System.out.println("Followed " + id);
             User following = userDBMS.getUserFromDatabase(id);

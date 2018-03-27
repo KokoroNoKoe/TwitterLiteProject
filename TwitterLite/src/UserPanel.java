@@ -66,8 +66,8 @@ public class UserPanel extends JPanel {
         postBtn = new JButton("Post");
 
 
-        currentFollowingsPanel.setBackground(Color.BLUE);
-        newsFeedPanel.setBackground(Color.RED);
+        currentFollowingsPanel.setBackground(Color.CYAN);
+        newsFeedPanel.setBackground(Color.CYAN);
 
 
     }
