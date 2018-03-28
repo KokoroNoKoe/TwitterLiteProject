@@ -92,7 +92,6 @@ public class AdminController implements ActionListener, TreeSelectionListener {
         if (obj instanceof DefaultMutableTreeNode) {
             currentSelectedNodeId = (String) ((DefaultMutableTreeNode) obj).getUserObject();
         }
-        System.out.println(currentSelectedNodeId);
     }
 
     public void openUserViewButtonPressed() {
