@@ -30,7 +30,7 @@ public class AdminControlPanel extends JPanel {
 
     private AdminControlPanel(DefaultMutableTreeNode root) {
         setBackground(Color.WHITE);
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(530, 500));
         createComponents(root);
         setLayout();
 
@@ -83,14 +83,6 @@ public class AdminControlPanel extends JPanel {
 
         //treeViewPanel.add(treeScrollPane);
     }
-/*
-    public void updateTreeOld(DefaultMutableTreeNode treeNode){
-        DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
-        DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
-        root.add(treeNode);
-        model.reload(root);
-    }
-    */
 
     public void updateTree() {
         DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();

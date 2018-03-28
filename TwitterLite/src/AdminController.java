@@ -34,8 +34,6 @@ public class AdminController implements ActionListener, TreeSelectionListener {
 
 
         userDatabase.addRoot(root);
-        //rootNode = new DefaultMutableTreeNode("Root");
-        //adminControlPanel.createTree(rootNode);
     }
 
     public void openUserView(String id) {
@@ -56,7 +54,6 @@ public class AdminController implements ActionListener, TreeSelectionListener {
                 adminControlPanel.setInfoLabel("<html>TOTAL<br>USERS:  " + userDatabase.getNumOfUsers() + "</html>");
                 root.print();
                 System.out.println();
-                //adminControlPanel.set
                 break;
 
             case (SHOW_GRP_TTL_BUTTON):
@@ -81,7 +78,6 @@ public class AdminController implements ActionListener, TreeSelectionListener {
 
         }
 
-        //adminControlPanel.updateTree(rootNode);
     }
 
     private String currentSelectedNodeId;
@@ -107,7 +103,6 @@ public class AdminController implements ActionListener, TreeSelectionListener {
 
     public void addUser() {
         String userId = adminControlPanel.getUserId();
-        //String groupId = adminControlPanel.getGroupId();
         String groupId = currentSelectedNodeId;
         UserGroup group = userDatabase.findGroup(groupId);
         if (group == null) {
@@ -124,9 +119,6 @@ public class AdminController implements ActionListener, TreeSelectionListener {
 
     public void addGroup() {
         String groupId = adminControlPanel.getGroupId();
-        //System.out.print("Enter a group id :");
-        //Scanner scan = new Scanner(System.in);
-        //String parent = scan.nextLine();
         String parent = currentSelectedNodeId;
         if (parent.equals("Root"))
             parent = "Root";
