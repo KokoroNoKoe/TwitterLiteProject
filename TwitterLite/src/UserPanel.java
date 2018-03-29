@@ -1,9 +1,7 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
-
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import java.awt.event.FocusListener;
 
 public class UserPanel extends JPanel {
 
@@ -15,7 +13,7 @@ public class UserPanel extends JPanel {
 
     private Color bluish = new Color(179,230,255),
                 greenish = new Color(204,255,153),
-                purplish = new Color(153,51,255);
+                purplish = new Color(85, 178,255);
 
     public UserPanel(String title) {
         createComponents();
@@ -38,9 +36,18 @@ public class UserPanel extends JPanel {
     public void setController(ActionListener controller){
         followBtn.addActionListener(controller);
         postBtn.addActionListener(controller);
+
     }
 
+    public void setFocusTweetListener(FocusListener controller){
+        tweetTextArea.addFocusListener(controller);
+    }
 
+    public void setFocusFollowListener(FocusListener controller){
+        userIdTextArea.addFocusListener(controller);
+    }
+
+    // GETTERS AND SETTERS
     public String getUserId(){
         return userIdTextArea.getText();
     }
@@ -49,7 +56,15 @@ public class UserPanel extends JPanel {
         return tweetTextArea.getText();
     }
 
+    public String getUserIdTextArea() {
+        return userIdTextArea.getText();
+    }
 
+    public String getTweetTextArea(){
+        return tweetTextArea.getText();
+    }
+
+    // UPDATES
     public void updateFollowings(String followingsList){
         followingsLabel.setText(followingsList);
     }
@@ -58,6 +73,22 @@ public class UserPanel extends JPanel {
         newsFeedLabel.setText(newsFeed);
     }
 
+    // HELPER METHODS
+    public void focusUserId() {
+        userIdTextArea.setText("");
+    }
+
+    public void unfocusUserId() {
+        userIdTextArea.setText("Enter a userId");
+    }
+
+    public void focusTweet() {
+        tweetTextArea.setText("");
+    }
+
+    public void unfocusTweer() {
+        tweetTextArea.setText("Post tweet here...");
+    }
 
     private void createComponents() {
 
@@ -71,10 +102,10 @@ public class UserPanel extends JPanel {
         newsFeedLabel.setBorder(BorderFactory.createEtchedBorder());
         newsFeedScrollPane = new JScrollPane(newsFeedLabel);
         newsFeedScrollPane.setPreferredSize(new Dimension(260,140));
-        userIdTextArea = new JTextArea("User Id");
+        userIdTextArea = new JTextArea("Enter a userId");
         userIdTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         userIdTextArea.setBackground(greenish);
-        tweetTextArea = new JTextArea("tweet here");
+        tweetTextArea = new JTextArea("Post tweet here...");
         tweetTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         tweetTextArea.setBackground(greenish);
         followBtn = new JButton("Follow");

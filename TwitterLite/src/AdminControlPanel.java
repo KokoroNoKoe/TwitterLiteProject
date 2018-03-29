@@ -6,6 +6,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -25,8 +26,7 @@ public class AdminControlPanel extends JPanel {
     private JLabel infoLabel;
 
     private Color bluish = new Color(179,230,255),
-            greenish = new Color(204,255,153),
-            purplish = new Color(153,51,255);
+            greenish = new Color(204,255,153);
 
     private AdminControlPanel(DefaultMutableTreeNode root) {
         setBackground(Color.WHITE);
@@ -56,6 +56,29 @@ public class AdminControlPanel extends JPanel {
 
     }
 
+    public void setUserFocusListener(FocusListener listener) {
+        userIdTextArea.addFocusListener(listener);
+    }
+
+    public void setGroupFocusListener(FocusListener listener) {
+        groupITextArea.addFocusListener(listener);
+    }
+
+    public void focusUserTextArea() {
+        userIdTextArea.setText("");
+    }
+
+    public void unfocusUserTextArea() {
+        userIdTextArea.setText("Enter a new user name...");
+    }
+
+    public void focusGroupTextArea() {
+        groupITextArea.setText("");
+    }
+
+    public void unfocusGroupTextArea() {
+        groupITextArea.setText("Enter a new group name...");
+    }
 
     public String getUserId() {
         return userIdTextArea.getText();
@@ -65,23 +88,8 @@ public class AdminControlPanel extends JPanel {
         return groupITextArea.getText();
     }
 
-    public JTree getUserTree() {
-        return userTree;
-    }
-
     public void setInfoLabel(String msg) {
         infoLabel.setText(msg);
-    }
-
-    public void createTree(DefaultMutableTreeNode treeNode) {
-        DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
-        DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
-        root.add(treeNode);
-        model.reload(root);
-        // treeScrollPane = new JScrollPane();
-        //treeScrollPane.getViewport().setView(userTree);
-
-        //treeViewPanel.add(treeScrollPane);
     }
 
     public void updateTree() {
@@ -113,10 +121,12 @@ public class AdminControlPanel extends JPanel {
         showMsgTotalBtn = new JButton("Show Total Messages");
         showPosMsgNumBtn = new JButton("Show Total Positives");
 
-        userIdTextArea = new JTextArea("idName");
+        userIdTextArea = new JTextArea("Enter a new user name...");
         userIdTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        groupITextArea = new JTextArea("Root");
+        userIdTextArea.setBackground(greenish);
+        groupITextArea = new JTextArea("Enter a new group name...");
         groupITextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        groupITextArea.setBackground(greenish);
 
         infoLabel = new JLabel("App Info");
         infoLabel.setBorder(BorderFactory.createEtchedBorder());

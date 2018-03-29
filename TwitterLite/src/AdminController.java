@@ -4,6 +4,8 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.Scanner;
 
 public class AdminController implements ActionListener, TreeSelectionListener {
@@ -14,7 +16,7 @@ public class AdminController implements ActionListener, TreeSelectionListener {
     private UserDBMS userDBMS = UserDBMS.getInstance(userDatabase);
     private UserComponentFactory userComponentFactory = new UserComponentFactory(userDBMS);
     private UserGroup root;
-    private DefaultMutableTreeNode rootNode;
+    private String currentSelectedNodeId;
 
     private final String OPEN_USER_VIEW_BUTTON = "Open User View";
     private final String SHOW_USER_TTL_BUTTON = "Show Total Users";
@@ -30,14 +32,34 @@ public class AdminController implements ActionListener, TreeSelectionListener {
         System.out.println("Admin controller");
         adminControlPanel = AdminControlPanel.getInstance(rootNode);
         adminControlPanel.setController(this);
+        adminControlPanel.setUserFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent focusEvent) {
+                adminControlPanel.focusUserTextArea();
+            }
+
+            @Override
+            public void focusLost(FocusEvent focusEvent) {
+                if (adminControlPanel.getUserId().equals(""))
+                    adminControlPanel.unfocusUserTextArea();
+            }
+        });
+        adminControlPanel.setGroupFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent focusEvent) {
+                adminControlPanel.focusGroupTextArea();
+            }
+
+            @Override
+            public void focusLost(FocusEvent focusEvent) {
+                if (adminControlPanel.getGroupId().equals(""))
+                    adminControlPanel.unfocusGroupTextArea();
+            }
+        });
         root = userComponentFactory.createGroup("Root", rootNode);
 
 
         userDatabase.addRoot(root);
-    }
-
-    public void openUserView(String id) {
-
     }
 
     @Override
@@ -70,17 +92,17 @@ public class AdminController implements ActionListener, TreeSelectionListener {
 
             case (ADD_USER):
                 addUser();
+                adminControlPanel.unfocusUserTextArea();
                 break;
 
             case (ADD_GROUP):
                 addGroup();
+                adminControlPanel.unfocusGroupTextArea();
                 break;
 
         }
 
     }
-
-    private String currentSelectedNodeId;
 
     @Override // JTree listener
     public void valueChanged(TreeSelectionEvent e) {
@@ -133,7 +155,6 @@ public class AdminController implements ActionListener, TreeSelectionListener {
             }
         }
     }
-
 
     //Singleton
     public static AdminController getInstance() {
