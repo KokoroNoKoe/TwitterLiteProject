@@ -13,10 +13,10 @@ import java.util.HashMap;
  */
 public class UserDatabase {
     private static UserDatabase instance = null;
-    private int numOfUsers;
-    private int numOfGroups;
-    private int numOfTweets;
-    private int numOfPositiveMsg;
+    private int numOfUsers;  //number of total users
+    private int numOfGroups; //number of total groups
+    private int numOfTweets; //number of total tweets
+    private int numOfPositiveMsg; //number of total positive messages
     private ArrayList<Tweet> allTweets = new ArrayList<>();
     private HashMap<String, UserComponent> allUsersAndGroupsMap = new HashMap<>();
     private PositiveWordList positiveList = new PositiveWordList();

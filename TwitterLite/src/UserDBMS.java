@@ -1,15 +1,15 @@
+/**
+ * This class allows Users to query the UserDatabase.
+ * User class does not have a direct reference to UserDatabase, but UserDBMS.
+ *
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class UserDBMS {
 
-    /**
-     * This class allows Users to query the UserDatabase.
-     * User class does not have a direct reference to UserDatabase, but UserDBMS.
-     *
-     * @author Yuki Yamada
-     * @author Aleix Molla
-     * @version 2018/03/30
-     */
     private static UserDBMS instance = null;
-    private UserDatabase userDatabase;
+    private UserDatabase userDatabase; // the main database
 
     /**
      * Constructor

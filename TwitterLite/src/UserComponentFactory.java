@@ -29,7 +29,7 @@ public class UserComponentFactory {
      */
     public User createUser(String id, DefaultMutableTreeNode node) {
         User user = new User(id);
-        user.setUserDBMS(userDBMS);
+        user.setUserDBMS(userDBMS); //user DBMS is assigned to each user
         user.setTreeNode(node);
         return user;
     }

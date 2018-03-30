@@ -10,11 +10,11 @@ import java.util.ArrayList;
  */
 public class User extends UserComponent implements Subject, Observer, Acceptor {
     private String id;
-    private ArrayList<String> followers = new ArrayList<>();
-    private ArrayList<String> followings = new ArrayList<>();
-    private ArrayList<Tweet> feedList = new ArrayList<>();
+    private ArrayList<String> followers = new ArrayList<>(); //stores followers user ids
+    private ArrayList<String> followings = new ArrayList<>();//stores followings user ids
+    private ArrayList<Tweet> feedList = new ArrayList<>(); //stores tweets to show on the news feed
     private UserDBMS userDBMS = null;
-    private Tweet last; //The last post of this user
+    private Tweet last; //The last post of this user is kept track
 
 
     /**
@@ -87,7 +87,7 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
         if (userDBMS.doesUserIdExist(id) && !followings.contains(id) && !id.equals(this.id)) {
             followings.add(id); //does not see the news feed before it follows
             System.out.println("Followed " + id);
-            User following = userDBMS.getUserFromDatabase(id);
+            User following = userDBMS.getUserFromDatabase(id);//gets a user from the database
             following.getFollowed(this.id);//observer?
             return true;
         } else {
@@ -104,10 +104,10 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
      */
     public void post(String msg) {
         Tweet tweet = Tweet.createTweet(getId(), msg);
-        last = tweet;
+        last = tweet; //the last tweet of this user's is kept
         addFeed(tweet);
         userDBMS.addNewTweet(tweet);
-        notifyObservers();
+        notifyObservers(); //tells all the followers
     }
 
     /**
