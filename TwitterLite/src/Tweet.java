@@ -12,7 +12,7 @@ public class Tweet {
     }
 
     /**
-     * 
+     *
      * @param userId
      * @param msg
      * @return

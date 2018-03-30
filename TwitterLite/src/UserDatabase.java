@@ -148,6 +148,10 @@ public class UserDatabase {
         return numOfPositiveMsg;
     }
 
+    public float getPercentOfPositiveMsg(){
+        return ((float)numOfPositiveMsg/(float)numOfTweets);
+    }
+
     public static UserDatabase getInstance() {
         if (instance == null)
             return new UserDatabase();
