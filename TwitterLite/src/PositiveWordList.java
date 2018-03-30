@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class PositiveWordList extends ArrayList<String> {
 
-    //test
+    //initial array list of positive words
     private final static String[] TEST_WORDS = {"Good", "Great", "Excellent", "Easy", "Happy", "Lucky"};
 
     /**
@@ -20,15 +20,16 @@ public class PositiveWordList extends ArrayList<String> {
         addTestWords();//add the test words to this
     }
 
-    //test
+    /**
+     * Adds test words to this list
+     */
     public void addTestWords() {
         addPositiveWords(TEST_WORDS);
     }
 
     /**
-     * Adds a positive word to this
-     *
-     * @param
+     * Adds an array of positive words to this list
+     * @param posWords array of positive word Strings
      */
     public void addPositiveWords(String[] posWords) {
         for (String word : posWords) {
@@ -39,8 +40,8 @@ public class PositiveWordList extends ArrayList<String> {
     /**
      * Checks if this PositiveWordList contains the word given
      *
-     * @param
-     * @return
+     * @param msg the message to be checked
+     * @return true if the msg contains any positive word stored in this list
      */
     public boolean isPositive(String msg) {
         for (String stored : this) {

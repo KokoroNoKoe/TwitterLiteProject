@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class UserDatabase {
     private static UserDatabase instance = null;
-    private int numOfUsers;    
+    private int numOfUsers;
     private int numOfGroups;
     private int numOfTweets;
     private int numOfPositiveMsg;
