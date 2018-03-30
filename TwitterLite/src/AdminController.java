@@ -197,7 +197,7 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
     }
 
     /**
-     * Todo: Implement future Visitor pattern
+     * Todo: Implement for future Visitor pattern usage
      * @param visitor
      */
     @Override

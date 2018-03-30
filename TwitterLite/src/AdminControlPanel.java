@@ -31,6 +31,10 @@ public class AdminControlPanel extends JPanel {
     private Color bluish = new Color(179,230,255),
             greenish = new Color(204,255,153);
 
+    /**
+     * Constructor
+     * @param root
+     */
     private AdminControlPanel(DefaultMutableTreeNode root) {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(530, 500));
@@ -45,19 +49,28 @@ public class AdminControlPanel extends JPanel {
         frame.setVisible(true);
 
     }
-
+    /**
+     * @return String
+     */
     public String getUserId() {
         return userIdTextArea.getText();
     }
-
+    /**
+     * @return String
+     */
     public String getGroupId() {
         return groupITextArea.getText();
     }
 
+    /**
+     * @param msg
+     */
     public void setInfoLabel(String msg) {
         infoLabel.setText(msg);
     }
-
+    /**
+     * @param listener
+     */
     public void setController(ActionListener listener) {
         addUserBtn.addActionListener(listener);
         addGroupBtn.addActionListener(listener);
@@ -70,37 +83,57 @@ public class AdminControlPanel extends JPanel {
         userTree.addTreeSelectionListener((TreeSelectionListener)listener);
 
     }
-
+    /**
+     * @param listener
+     */
     public void setUserFocusListener(FocusListener listener) {
         userIdTextArea.addFocusListener(listener);
     }
-
+    /**
+     * @param listener
+     */
     public void setGroupFocusListener(FocusListener listener) {
         groupITextArea.addFocusListener(listener);
     }
 
+    /**
+     * Changes User text field when focus acquired
+     */
     public void focusUserTextArea() {
         userIdTextArea.setText("");
     }
-
+    /**
+     * Changes User text field when focus is lost and is empty
+     */
     public void unfocusUserTextArea() {
         userIdTextArea.setText("Enter a new user name...");
     }
-
+    /**
+     * Changes Group text field when focus acquired
+     */
     public void focusGroupTextArea() {
         groupITextArea.setText("");
     }
-
+    /**
+     * Changes Group text field when focus is lost and is empty
+     */
     public void unfocusGroupTextArea() {
         groupITextArea.setText("Enter a new group name...");
     }
 
+    /**
+     * Refresh the JTree components
+     */
     public void updateTree() {
         DefaultTreeModel model = (DefaultTreeModel) userTree.getModel();
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
         model.reload(root);
     }
 
+    /**
+     * Set ups all Swing components to be use by the admin panel
+     * @param root
+     */
     private void createComponents(DefaultMutableTreeNode root) {
 
         treeViewPanel = new JPanel();
@@ -138,6 +171,9 @@ public class AdminControlPanel extends JPanel {
 
     }
 
+    /**
+     * Sets ups the layout to be use by the admin panel
+     */
     private void setLayout() {
 
         GroupLayout layout = new GroupLayout(this);
@@ -186,7 +222,10 @@ public class AdminControlPanel extends JPanel {
 
     }
 
-    //Singleton
+    /**
+     * Generates a unique instance of AdminController, no more than one can be created
+     * @return AdminControlPanel
+     */
     public static AdminControlPanel getInstance(DefaultMutableTreeNode node) {
         if (instance == null)
             return new AdminControlPanel(node);
