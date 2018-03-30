@@ -4,7 +4,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.*;
 
-public class UserPanelController implements ActionListener {
+public class UserPanelController implements ActionListener, Acceptor {
 
     private String userId;
     private User user;
@@ -88,5 +88,10 @@ public class UserPanelController implements ActionListener {
     public void postPressed(){
         user.post(userPanel.getTweetToPost());
         userPanel.updateNewsFeed(user.getEveryNewsFeed());
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

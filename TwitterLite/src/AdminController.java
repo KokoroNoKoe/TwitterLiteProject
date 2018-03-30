@@ -8,7 +8,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.Scanner;
 
-public class AdminController implements ActionListener, TreeSelectionListener {
+public class AdminController implements ActionListener, TreeSelectionListener, Acceptor {
     private static AdminController instance = null;
 
     private AdminControlPanel adminControlPanel;
@@ -163,4 +163,8 @@ public class AdminController implements ActionListener, TreeSelectionListener {
         return instance;
     }
 
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }
