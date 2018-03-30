@@ -27,6 +27,7 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
 
     public AdminController() {
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Root");
+        currentSelectedNodeId = "Root";
         System.out.println("Admin controller");
         adminControlPanel = AdminControlPanel.getInstance(rootNode);
         adminControlPanel.setController(this);
@@ -85,7 +86,7 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
                 break;
 
             case (SHOW_POS_MSG_BUTTON):
-                adminControlPanel.setInfoLabel("<html>POSITIVE<br>MESSAGE:  " + userDatabase.getNumOfPositiveMsg() + "</html>");
+                adminControlPanel.setInfoLabel("<html>POSITIVE PERCENTAGE:<br>  " + (userDatabase.getPercentOfPositiveMsg())*100 + "%</html>");
                 break;
 
             case (ADD_USER):
@@ -140,8 +141,6 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
     public void addGroup() {
         String groupId = adminControlPanel.getGroupId();
         String parent = currentSelectedNodeId;
-        if (parent.equals("Root"))
-            parent = "Root";
         UserGroup parentGroup = userDatabase.findGroup(parent);
         if (parent == null) {
             adminControlPanel.setInfoLabel("Group does not exist");
