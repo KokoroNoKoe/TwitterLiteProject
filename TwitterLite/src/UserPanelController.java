@@ -4,6 +4,16 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.*;
 
+/**
+ * UserPanelController implements ActionListener and FocusListener.
+ * This class is instantiated when a AdminController opens an individual user view.
+ * UserPanelController has a corresponding User and UserPanel as its instance variables.
+ * This class accounts for following and tweeting.
+ *
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class UserPanelController implements ActionListener, Acceptor {
 
     private String userId;

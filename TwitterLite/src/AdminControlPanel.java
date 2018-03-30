@@ -8,6 +8,15 @@ import java.awt.event.FocusListener;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
+/**
+ *  AdminControlPanel is a JPanel.
+ *  This class is instantiated when AdminController is created.
+ *  Singleton class.
+ *
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class AdminControlPanel extends JPanel {
 
     private static AdminControlPanel instance = null;

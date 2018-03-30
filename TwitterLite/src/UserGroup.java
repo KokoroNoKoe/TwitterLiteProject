@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Represents a Group. UserGroup is a UserComponent
+ *
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class UserGroup extends UserComponent implements Acceptor{
     private String id;
     private ArrayList<UserComponent> userList  = new ArrayList<>();

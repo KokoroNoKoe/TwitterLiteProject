@@ -1,5 +1,13 @@
 import java.util.ArrayList;
 
+/**
+ * PositiveWordList is an ArrayList. This PositiveWordList is held by UserDatabase.
+ * This has boolean isPositive method to check if a given String contains a positive word or not.
+ *
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class PositiveWordList extends ArrayList<String> {
 
     //test

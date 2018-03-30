@@ -6,6 +6,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+/**
+ * Represents the main controller. This class is instantiated when the app starts.
+ * This implements ActionListener, TreeSelectionListener, and Acceptor.
+ *
+ * AdminController accounts for a creation of users and groups by using the UserFactory.
+ * The created users and groups are sent to the UserDatabase and stored.
+ * This class also accounts for updating AdminPanel and creates a UserPanel with UserPanelController.
+ * Singleton class.
+ *
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class AdminController implements ActionListener, TreeSelectionListener, Acceptor {
     private static AdminController instance = null;
 

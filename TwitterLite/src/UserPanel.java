@@ -3,6 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 
+/**
+ * UserPanel is a JPanel. It accounts for a user view.
+ * It accepts an user id to follow, a tweet, and shows news feed.
+ *
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class UserPanel extends JPanel {
 
     private JPanel currentFollowingsPanel, newsFeedPanel;

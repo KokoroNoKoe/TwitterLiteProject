@@ -1,6 +1,16 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class models a database of the all information of this Twitter application.
+ * All Users and UserGroups are stored in a HashMap, and all the Tweet instances are stored in a ArrayList.
+ * This class keeps the track of the number of Users, Groups, Tweet and the positive messages.
+ * You can ask to retrieve information from this UserDatabase.
+
+ * @author Yuki Yamada
+ * @author Aleix Molla
+ * @version 2018/03/30
+ */
 public class UserDatabase {
     private static UserDatabase instance = null;
     private int numOfUsers;
