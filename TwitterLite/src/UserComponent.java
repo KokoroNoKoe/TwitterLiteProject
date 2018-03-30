@@ -11,16 +11,26 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 public abstract class UserComponent {
 
-    protected DefaultMutableTreeNode treeNode;
 
+    protected DefaultMutableTreeNode treeNode; //The Tree node to be added to the JTree
+
+    /**
+     * @return treeNode of this UserComponent
+     */
     public DefaultMutableTreeNode getTreeNode() {
         return treeNode;
     }
 
+    /**
+     * @param node a node of this UserComponent
+     */
     public void setTreeNode(DefaultMutableTreeNode node){
         this.treeNode = node;
     }
 
+    /**
+     * Prints the information of the UserComponent
+     */
     public void print() {
         throw new UnsupportedOperationException();
     }

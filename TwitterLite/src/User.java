@@ -110,6 +110,10 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
         notifyObservers();
     }
 
+    /**
+     * Adds a Tweet in the news feed list
+     * @param tweet a Tweet to add to the list
+     */
     public void addFeed(Tweet tweet) {
         feedList.add(tweet);
     }

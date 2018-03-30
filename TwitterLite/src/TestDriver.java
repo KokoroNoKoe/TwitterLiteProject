@@ -7,7 +7,10 @@
  * @version 2018/03/30
  */
 public class TestDriver {
-    public static void main(String[]args){
-        AdminController adminController = AdminController.getInstance();
+    /**
+     * The first starting method to be called.
+     * @param args
+     */
+    public static void main(String[]args){ AdminController.getInstance();
     }
 }
