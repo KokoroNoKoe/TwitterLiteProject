@@ -33,6 +33,7 @@ public class UserPanelController implements ActionListener, Acceptor {
         this.userId = user.getId();
         this.userPanel = userPanel;
         this.userPanel.setController(this);
+        // Creates a listener for each focus needed
         this.userPanel.setFocusFollowListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent focusEvent) {

@@ -47,6 +47,7 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
         System.out.println("Admin controller");
         adminControlPanel = AdminControlPanel.getInstance(rootNode);
         adminControlPanel.setController(this);
+        // Creates a listener for each focus needed
         adminControlPanel.setUserFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent focusEvent) {
