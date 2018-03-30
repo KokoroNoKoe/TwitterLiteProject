@@ -11,6 +11,7 @@ public class TestDriver {
      * The first starting method to be called.
      * @param args
      */
-    public static void main(String[]args){ AdminController.getInstance();
+    public static void main(String[]args){
+        AdminController adminController = AdminController.getInstance();
     }
 }
