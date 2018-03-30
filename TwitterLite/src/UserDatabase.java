@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 public class UserDatabase {
     private static UserDatabase instance = null;
-
     private int numOfUsers;
     private int numOfGroups;
     private int numOfTweets;
@@ -12,15 +11,9 @@ public class UserDatabase {
     private HashMap<String, UserComponent> allUsersAndGroupsMap = new HashMap<>();
     private PositiveWordList positiveList = new PositiveWordList();
 
-
-
-
     private UserDatabase(){
 
     }
-
-
-
 
     /**
      * add an user to a HashMap

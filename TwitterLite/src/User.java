@@ -5,9 +5,9 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
     private ArrayList<String> followers = new ArrayList<>();
     private ArrayList<String> followings = new ArrayList<>();
     private ArrayList<Tweet> feedList = new ArrayList<>();
-
-
     private UserDBMS userDBMS = null;
+    private Tweet last;
+
 
     public User(String id) {
         this.id = id;
@@ -15,11 +15,6 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
 
     public String getId() {
         return id;
-    }
-
-    public void setUserDBMS(UserDBMS userDBMS) {
-        if (this.userDBMS == null)
-            this.userDBMS = userDBMS;
     }
 
     public String getEveryNewsFeed() {
@@ -40,6 +35,14 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
         return users;
     }
 
+    public void getFollowed(String follower){
+        followers.add(follower);
+    }
+
+    public void setUserDBMS(UserDBMS userDBMS) {
+        if (this.userDBMS == null)
+            this.userDBMS = userDBMS;
+    }
 
     public boolean follow(String id) {
         if (userDBMS.doesUserIdExist(id) && !followings.contains(id) && !id.equals(this.id)) {
@@ -52,10 +55,6 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
             System.out.println("failed");
             return false;
         }
-    }
-
-    public void getFollowed(String follower){
-        followers.add(follower);
     }
 
     public void post(String msg) {
@@ -73,15 +72,12 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
         feedList.add(tweet);
     }
 
-
     @Override
     public void update(Tweet tweet) {
         addFeed(tweet);
     }
 
-    private Tweet last;//the latest your post
-
-    @Override //observesrs are followers
+    @Override //observers are followers
     public void notifyObservers() {
         for(String followerId: followers ){
             userDBMS.getUserFromDatabase(followerId).update(last);

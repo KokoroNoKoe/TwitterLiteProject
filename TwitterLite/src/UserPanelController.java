@@ -12,7 +12,6 @@ public class UserPanelController implements ActionListener, Acceptor {
 
     private final String FOLLOW_BUTTON = "Follow";
     private final String POST_BUTTON = "Post";
-    private final String TRICK = "class javax.swing.JTextArea";
 
 
     public UserPanelController(UserPanel userPanel, User user) {

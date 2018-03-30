@@ -1,8 +1,12 @@
 public class UserDBMS {
 
-    public static UserDBMS instance = null;
+    private static UserDBMS instance = null;
     private UserDatabase userDatabase;
 
+    //Constructor
+    private UserDBMS(UserDatabase userDatabase) {
+        this.userDatabase = userDatabase;
+    }
 
     public boolean doesUserIdExist(String userId) {
         User user = userDatabase.getUserFromDatabase(userId);
@@ -22,11 +26,6 @@ public class UserDBMS {
 
     public void addNewTweet(Tweet tweet){
         userDatabase.addTweet(tweet);
-    }
-
-    //Constructor
-    private UserDBMS(UserDatabase userDatabase) {
-        this.userDatabase = userDatabase;
     }
 
     //Singleton

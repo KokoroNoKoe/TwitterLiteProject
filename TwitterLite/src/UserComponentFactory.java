@@ -21,6 +21,4 @@ public class UserComponentFactory {
         return group;
     }
 
-
-
 }

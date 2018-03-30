@@ -35,6 +35,8 @@ Click a  user from the left JTree, and click "Open User View" button.
 
 /When a group(folder) has no users or groups in it, its icon is the same as the normal user(file).
 
+/Any JTextArea has a focus & unfocus feauture to easy write text, a known bug is if you write something and unfocus refocus, the text is going to dissapear.
+
 /Positive words are "Good", "Great", "Excellent", "Easy", "Happy", "Lucky".
 
 /You cannot see the followings posts that had posted before you follow him/her.

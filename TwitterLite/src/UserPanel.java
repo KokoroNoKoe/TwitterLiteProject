@@ -13,7 +13,7 @@ public class UserPanel extends JPanel {
 
     private Color bluish = new Color(179,230,255),
                 greenish = new Color(204,255,153),
-                purplish = new Color(85, 178,255);
+                darkbluish = new Color(85, 178,255);
 
     public UserPanel(String title) {
         createComponents();
@@ -33,20 +33,6 @@ public class UserPanel extends JPanel {
         frame.setLocation(dim.width/2-frame.getSize().width/2,dim.height/2-frame.getSize().height/2);
     }
 
-    public void setController(ActionListener controller){
-        followBtn.addActionListener(controller);
-        postBtn.addActionListener(controller);
-
-    }
-
-    public void setFocusTweetListener(FocusListener controller){
-        tweetTextArea.addFocusListener(controller);
-    }
-
-    public void setFocusFollowListener(FocusListener controller){
-        userIdTextArea.addFocusListener(controller);
-    }
-
     // GETTERS AND SETTERS
     public String getUserId(){
         return userIdTextArea.getText();
@@ -62,6 +48,20 @@ public class UserPanel extends JPanel {
 
     public String getTweetTextArea(){
         return tweetTextArea.getText();
+    }
+
+    public void setController(ActionListener controller){
+        followBtn.addActionListener(controller);
+        postBtn.addActionListener(controller);
+
+    }
+
+    public void setFocusTweetListener(FocusListener controller){
+        tweetTextArea.addFocusListener(controller);
+    }
+
+    public void setFocusFollowListener(FocusListener controller){
+        userIdTextArea.addFocusListener(controller);
     }
 
     // UPDATES
@@ -116,7 +116,7 @@ public class UserPanel extends JPanel {
 
         currentFollowingsPanel.setBackground(bluish);
         newsFeedPanel.setBackground(bluish);
-        this.setBackground(purplish);
+        this.setBackground(darkbluish);
 
     }
 

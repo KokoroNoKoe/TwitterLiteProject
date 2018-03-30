@@ -9,16 +9,15 @@ public class UserGroup extends UserComponent implements Acceptor{
 
     public UserGroup(String id) {
         this.id = id;
-        //this.treeNode = new DefaultMutableTreeNode(id);
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void addUserComponent(UserComponent user) {
         userList.add(user);
         this.treeNode.add(user.getTreeNode());
-    }
-
-    public String getId() {
-        return id;
     }
 
     @Override

@@ -10,7 +10,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class AdminControlPanel extends JPanel {
 
-    public static AdminControlPanel instance = null;
+    private static AdminControlPanel instance = null;
 
     private JPanel treeViewPanel;
     private JTree userTree;
@@ -35,6 +35,18 @@ public class AdminControlPanel extends JPanel {
         frame.pack();
         frame.setVisible(true);
 
+    }
+
+    public String getUserId() {
+        return userIdTextArea.getText();
+    }
+
+    public String getGroupId() {
+        return groupITextArea.getText();
+    }
+
+    public void setInfoLabel(String msg) {
+        infoLabel.setText(msg);
     }
 
     public void setController(ActionListener listener) {
@@ -72,18 +84,6 @@ public class AdminControlPanel extends JPanel {
 
     public void unfocusGroupTextArea() {
         groupITextArea.setText("Enter a new group name...");
-    }
-
-    public String getUserId() {
-        return userIdTextArea.getText();
-    }
-
-    public String getGroupId() {
-        return groupITextArea.getText();
-    }
-
-    public void setInfoLabel(String msg) {
-        infoLabel.setText(msg);
     }
 
     public void updateTree() {

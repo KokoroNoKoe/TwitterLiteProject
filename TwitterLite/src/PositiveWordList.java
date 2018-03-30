@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class PositiveWordList extends ArrayList<String> {
 
     //test
-    public final static String[] TEST_WORDS = {"Good", "Great", "Excellent", "Easy", "Happy", "Lucky"};
+    private final static String[] TEST_WORDS = {"Good", "Great", "Excellent", "Easy", "Happy", "Lucky"};
 
     /**
      * Constructor
@@ -22,16 +22,11 @@ public class PositiveWordList extends ArrayList<String> {
      *
      * @param
      */
-    public void addAPositiveWord(String posWord) {
-        add(posWord);
-    }
-
     public void addPositiveWords(String[] posWords) {
         for (String word : posWords) {
             add(word);
         }
     }
-
 
     /**
      * Checks if this PositiveWordList contains the word given
