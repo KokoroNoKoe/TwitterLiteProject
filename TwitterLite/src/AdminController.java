@@ -80,7 +80,7 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
 
     /**
      * AdminPanel listener actions
-     * @param e
+     * @param e ActionEvent object
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -126,7 +126,7 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
 
     /**
      * When JTree item is press, gets current selected node
-     * @param e
+     * @param e TreeSelectionEvent object
      */
     @Override
     public void valueChanged(TreeSelectionEvent e) {

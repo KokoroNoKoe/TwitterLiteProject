@@ -80,7 +80,7 @@ public class UserPanelController implements ActionListener, Acceptor {
 
     /**
      * UserPanel listener actions
-     * @param e
+     * @param e ActionEvent object
      */
     @Override
     public void actionPerformed(ActionEvent e){
