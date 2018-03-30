@@ -1,5 +1,3 @@
-import com.sun.deploy.uitoolkit.impl.awt.ui.SwingConsoleWindow;
-
 import javax.swing.*;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -15,16 +13,12 @@ public class AdminControlPanel extends JPanel {
     public static AdminControlPanel instance = null;
 
     private JPanel treeViewPanel;
-    private JScrollPane treeScrollPane;
     private JTree userTree;
-
+    private JScrollPane treeScrollPane;
     private JButton addUserBtn, addGroupBtn, openUserViewBtn,
             showUserTotalBtn, showGroupTotalBtn, showMsgTotalBtn, showPosMsgNumBtn;
-
     private JTextArea userIdTextArea, groupITextArea;
-
     private JLabel infoLabel;
-
     private Color bluish = new Color(179,230,255),
             greenish = new Color(204,255,153);
 
