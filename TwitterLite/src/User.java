@@ -1,7 +1,6 @@
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
 
-public class User extends UserComponent implements Subject, Observer {
+public class User extends UserComponent implements Subject, Observer, Acceptor {
     private String id;
     private ArrayList<String> followers = new ArrayList<>();
     private ArrayList<String> followings = new ArrayList<>();
@@ -12,7 +11,6 @@ public class User extends UserComponent implements Subject, Observer {
 
     public User(String id) {
         this.id = id;
-        //this.treeNode = new DefaultMutableTreeNode(id);
     }
 
     public String getId() {
@@ -106,5 +104,8 @@ public class User extends UserComponent implements Subject, Observer {
         System.out.print(" \"" + getId() + "\"");
     }
 
-
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

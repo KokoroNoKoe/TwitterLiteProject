@@ -1,8 +1,7 @@
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class UserGroup extends UserComponent {
+public class UserGroup extends UserComponent implements Acceptor{
     private String id;
     private ArrayList<UserComponent> userList  = new ArrayList<>();
     ;
@@ -31,6 +30,11 @@ public class UserGroup extends UserComponent {
             userComponent.print();
         }
         System.out.print(")");
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }
 
