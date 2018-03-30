@@ -23,12 +23,17 @@ public class UserPanelController implements ActionListener, Acceptor {
     private final String FOLLOW_BUTTON = "Follow";
     private final String POST_BUTTON = "Post";
 
-
+    /**
+     * Constructor
+     * @param userPanel
+     * @param user
+     */
     public UserPanelController(UserPanel userPanel, User user) {
         this.user = user;
         this.userId = user.getId();
         this.userPanel = userPanel;
         this.userPanel.setController(this);
+        // Creates a listener for each focus needed
         this.userPanel.setFocusFollowListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent focusEvent) {
@@ -57,9 +62,10 @@ public class UserPanelController implements ActionListener, Acceptor {
         startTimer();
     }
 
+    /**
+     * Timer to refresh the user panel screen every second
+     */
     public void startTimer() {
-
-
         class TimerListener implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
@@ -72,6 +78,10 @@ public class UserPanelController implements ActionListener, Acceptor {
         t.start();
     }
 
+    /**
+     * UserPanel listener actions
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e){
         String source = e.getActionCommand();
@@ -88,17 +98,27 @@ public class UserPanelController implements ActionListener, Acceptor {
         }
     }
 
+    /**
+     * Helper method used in actionPerformed
+     */
     public void followPressed(){
         user.follow(userPanel.getUserId());
         userPanel.updateFollowings(user.getEveryFollowingsString());
         userPanel.unfocusUserId();
     }
 
+    /**
+     * Helper method used in actionPerformed
+     */
     public void postPressed(){
         user.post(userPanel.getTweetToPost());
         userPanel.updateNewsFeed(user.getEveryNewsFeed());
     }
 
+    /**
+     * Todo: Implement for future Visitor pattern usage
+     * @param visitor
+     */
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
