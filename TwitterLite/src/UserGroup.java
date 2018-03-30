@@ -11,20 +11,30 @@ import java.util.Iterator;
 public class UserGroup extends UserComponent implements Acceptor{
     private String id;
     private ArrayList<UserComponent> userList  = new ArrayList<>();
-    ;
 
 
+    /**
+     * Constructor
+     * @param id
+     */
     public UserGroup(String id) {
         this.id = id;
     }
 
+    /**
+     * @return a group id of this UserGroup
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Adds a User or a UserGroup to the list of UserComponent
+     * @param user can be a User or a UserGroup
+     */
     public void addUserComponent(UserComponent user) {
         userList.add(user);
-        this.treeNode.add(user.getTreeNode());
+        this.treeNode.add(user.getTreeNode());//The JTree's node gets updated
     }
 
     @Override

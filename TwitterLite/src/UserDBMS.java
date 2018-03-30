@@ -11,11 +11,19 @@ public class UserDBMS {
     private static UserDBMS instance = null;
     private UserDatabase userDatabase;
 
-    //Constructor
+    /**
+     * Constructor
+     * @param userDatabase user Database which this DBMS communicates with
+     */
     private UserDBMS(UserDatabase userDatabase) {
         this.userDatabase = userDatabase;
     }
 
+    /**
+     * Returns true if a User with a given user id exists in the database
+     * @param userId the user id to look for
+     * @return true if a User exists in the database
+     */
     public boolean doesUserIdExist(String userId) {
         User user = userDatabase.getUserFromDatabase(userId);
         if (user == null) {
@@ -24,6 +32,11 @@ public class UserDBMS {
         return true;
     }
 
+    /**
+     * Returns true if a UserGroup with a given group id exists in the database
+     * @param userId the group id to look for
+     * @return true if a GroupUser exists in the database
+     */
     public User getUserFromDatabase(String userId){
         User user = userDatabase.getUserFromDatabase(userId);
         if (user == null) {
@@ -32,11 +45,19 @@ public class UserDBMS {
         return user;
     }
 
+    /**
+     * Adds a Tweet to the database
+     * @param tweet a Tweet instance
+     */
     public void addNewTweet(Tweet tweet){
         userDatabase.addTweet(tweet);
     }
 
-    //Singleton
+    /**
+     * Singleton method
+     * @param database is sent to the UserDBMS constructor
+     * @return a new UserDBMS instance if it is null, otherwise returns itself.
+     */
     public static UserDBMS getInstance(UserDatabase database) {
         if (instance == null)
             return new UserDBMS(database);
