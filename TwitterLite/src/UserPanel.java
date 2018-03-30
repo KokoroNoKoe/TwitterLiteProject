@@ -23,6 +23,10 @@ public class UserPanel extends JPanel {
                 greenish = new Color(204,255,153),
                 darkbluish = new Color(85, 178,255);
 
+    /**
+     * Constructor
+     * @param title
+     */
     public UserPanel(String title) {
         createComponents();
 
@@ -40,64 +44,98 @@ public class UserPanel extends JPanel {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width/2-frame.getSize().width/2,dim.height/2-frame.getSize().height/2);
     }
-
-    // GETTERS AND SETTERS
+    /**
+     * @return String
+     */
     public String getUserId(){
         return userIdTextArea.getText();
     }
-
+    /**
+     * @return String
+     */
     public String getTweetToPost(){
         return tweetTextArea.getText();
     }
-
+    /**
+     * @return String
+     */
     public String getUserIdTextArea() {
         return userIdTextArea.getText();
     }
-
+    /**
+     * @return String
+     */
     public String getTweetTextArea(){
         return tweetTextArea.getText();
     }
-
+    /**
+     * @param controller
+     */
     public void setController(ActionListener controller){
         followBtn.addActionListener(controller);
         postBtn.addActionListener(controller);
 
     }
-
+    /**
+     * @param controller
+     */
     public void setFocusTweetListener(FocusListener controller){
         tweetTextArea.addFocusListener(controller);
     }
-
+    /**
+     * @param controller
+     */
     public void setFocusFollowListener(FocusListener controller){
         userIdTextArea.addFocusListener(controller);
     }
 
-    // UPDATES
+    /**
+     * Updates the following List
+     * @param followingsList
+     */
     public void updateFollowings(String followingsList){
         followingsLabel.setText(followingsList);
     }
 
+    /**
+     * Updates the News Feed
+     * @param newsFeed
+     */
     public void updateNewsFeed(String newsFeed) {
         newsFeedLabel.setText(newsFeed);
     }
 
-    // HELPER METHODS
+    /**
+     * Changes UserId text field when focus acquired
+     */
     public void focusUserId() {
         userIdTextArea.setText("");
     }
 
+    /**
+     * Changes UserId text field when focus is lost and is empty
+     */
     public void unfocusUserId() {
         userIdTextArea.setText("Enter a userId");
     }
 
+    /**
+     * Changes Tweet text field when focus acquired
+     */
     public void focusTweet() {
         tweetTextArea.setText("");
     }
 
+    /**
+     * Changes Tweet text field when focus is lost and is empty
+     */
     public void unfocusTweer() {
         tweetTextArea.setText("Post tweet here...");
     }
 
+    /**
+     * Set ups all Swing components to be use by this user panel
+     */
     private void createComponents() {
 
         currentFollowingsPanel = new JPanel();
@@ -128,6 +166,9 @@ public class UserPanel extends JPanel {
 
     }
 
+    /**
+     * Sets ups the layout to be use by this user panel
+     */
     private void setLayout() {
 
         currentFollowingsPanel.add(followingScrollPane);
