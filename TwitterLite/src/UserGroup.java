@@ -37,6 +37,9 @@ public class UserGroup extends UserComponent implements Acceptor{
         this.treeNode.add(user.getTreeNode());//The JTree's node gets updated
     }
 
+    /**
+     * Prints every UserComponents using the composite and iterator pattern
+     */
     @Override
     public void print() {
         System.out.print(" (["+ getId() + "]");
