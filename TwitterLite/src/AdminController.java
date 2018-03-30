@@ -38,6 +38,9 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
     private final String ADD_GROUP = "Add Group";
 
 
+    /**
+     * Set up every JComponent
+     */
     public AdminController() {
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Root");
         currentSelectedNodeId = "Root";
@@ -74,6 +77,10 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
         userDatabase.addRoot(root);
     }
 
+    /**
+     * AdminPanel listener actions
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String source = e.getActionCommand();
@@ -116,14 +123,21 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
 
     }
 
-    @Override // JTree listener
+    /**
+     * When JTree item is press, gets current selected node
+     * @param e
+     */
+    @Override
     public void valueChanged(TreeSelectionEvent e) {
-        Object obj = e.getPath().getLastPathComponent(); // Look here!
+        Object obj = e.getPath().getLastPathComponent();
         if (obj instanceof DefaultMutableTreeNode) {
             currentSelectedNodeId = (String) ((DefaultMutableTreeNode) obj).getUserObject();
         }
     }
 
+    /**
+     * Opens the User panel menu
+     */
     public void openUserViewButtonPressed() {
         String userId = currentSelectedNodeId;
         User user = userDatabase.getUserFromDatabase(userId);
@@ -135,6 +149,9 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
         }
     }
 
+    /**
+     * Helper method used in actionPerformed
+     */
     public void addUser() {
         String userId = adminControlPanel.getUserId();
         String groupId = currentSelectedNodeId;
@@ -151,6 +168,9 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
         }
     }
 
+    /**
+     * Helper method used in actionPerformed
+     */
     public void addGroup() {
         String groupId = adminControlPanel.getGroupId();
         String parent = currentSelectedNodeId;
@@ -166,13 +186,20 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
         }
     }
 
-    //Singleton
+    /**
+     * Generates a unique instance of AdminController, no more than one can be created
+     * @return AdminController
+     */
     public static AdminController getInstance() {
         if (instance == null)
             return new AdminController();
         return instance;
     }
 
+    /**
+     * Todo: Implement future Visitor pattern
+     * @param visitor
+     */
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
