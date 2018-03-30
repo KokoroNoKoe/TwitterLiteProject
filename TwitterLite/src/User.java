@@ -118,12 +118,19 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
         feedList.add(tweet);
     }
 
+    /**
+     * Update this user News feed
+     * @param tweet
+     */
     @Override
     public void update(Tweet tweet) {
         addFeed(tweet);
     }
 
-    @Override //observers are followers
+    /**
+     * Notifies all followers of this user
+     */
+    @Override
     public void notifyObservers() {
         for(String followerId: followers ){
             userDBMS.getUserFromDatabase(followerId).update(last);
@@ -131,21 +138,36 @@ public class User extends UserComponent implements Subject, Observer, Acceptor {
         }
     }
 
+    /**
+     * Adds a new follower
+     * @param observer
+     */
     @Override
     public void registerObserver(Observer observer) {
 
     }
 
+    /**
+     * Removes an existing follower
+     * @param observer
+     */
     @Override
     public void removeObserver(Observer observer) {
 
     }
 
+    /**
+     * Debug message to test JTree users
+     */
     @Override
     public void print() {
         System.out.print(" \"" + getId() + "\"");
     }
 
+    /**
+     * Todo: Implement for future Visitor pattern usage
+     * @param visitor
+     */
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
