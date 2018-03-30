@@ -11,6 +11,12 @@ public class Tweet {
         return msg;
     }
 
+    /**
+     * 
+     * @param userId
+     * @param msg
+     * @return
+     */
     public static Tweet createTweet (String userId, String msg){
         return new Tweet(userId, msg);
     }
