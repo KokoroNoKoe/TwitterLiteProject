@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=userId\ msg
+comment0.target=Tweet(java.lang.String,\ java.lang.String)
+comment0.text=\n\ Constructor\n\ @param\ userId\n\ @param\ msg\n
+comment1.params=
+comment1.target=java.lang.String\ getMsg()
+comment1.text=\n\ @return\ the\ String\ message\ of\ this\ Tweet\n
+comment2.params=userId\ msg
+comment2.target=Tweet\ createTweet(java.lang.String,\ java.lang.String)
+comment2.text=\n\ A\ new\ Tweet\ can\ only\ be\ created\ by\ calling\ this\ static\ method.\n\ @param\ userId\ user\ id\ of\ the\ Tweet\n\ @param\ msg\ the\ message\ of\ the\ Tweet\n\ @return\ a\ created\ instance\ of\ a\ Tweet\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\n\ @return\ a\ description\ of\ the\ class\n
+numComments=4
