@@ -176,7 +176,7 @@ public class AdminController implements ActionListener, TreeSelectionListener, A
         String groupId = adminControlPanel.getGroupId();
         String parent = currentSelectedNodeId;
         UserGroup parentGroup = userDatabase.findGroup(parent);
-        if (parent == null) {
+        if (parentGroup == null) {
             adminControlPanel.setInfoLabel("Group does not exist");
         } else {
             DefaultMutableTreeNode node = new DefaultMutableTreeNode(groupId);
