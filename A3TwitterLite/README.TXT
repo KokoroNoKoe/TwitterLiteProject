@@ -1,14 +1,9 @@
 
 PROJECT TITLE: TwitterLight
-
 PURPOSE OF PROJECT: The purpose is to design and implement a mini version of Twitter, complete with graphical user interface (GUI).
-
 VERSION or DATE: 2018/03/30
-
 HOW TO START THIS PROJECT: The TestDriver class has a main method, so please run the TestDriver class first. It shows a AdminControlPanel.
- 
 AUTHORS: Yuki Yamada(138557) and Aleix Molla(146072)
-
 USER INSTRUCTIONS:
 
 <<Instructions of operations>>
